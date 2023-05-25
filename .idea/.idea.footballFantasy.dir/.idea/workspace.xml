@@ -7,29 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17a9c417-5c6a-4974-a6dc-dd45f284aeaf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/footballFantasy/Database.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestProject/TestProject.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TestProject/TestProject.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestProject/obj/Debug/net7.0/TestProject.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TestProject/obj/Debug/net7.0/TestProject.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestProject/obj/Debug/net7.0/TestProject.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TestProject/obj/Debug/net7.0/TestProject.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestProject/obj/TestProject.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TestProject/obj/TestProject.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestProject/obj/TestProject.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/TestProject/obj/TestProject.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestProject/obj/TestProject.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/TestProject/obj/TestProject.csproj.nuget.g.targets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestProject/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/TestProject/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestProject/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TestProject/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestProject/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TestProject/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestProject/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/TestProject/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/footballFantasy/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/footballFantasy/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/footballFantasy/footballFantasy.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/footballFantasy/footballFantasy.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/footballFantasy/obj/Debug/net7.0/footballFantasy.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/footballFantasy/obj/Debug/net7.0/footballFantasy.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/footballFantasy/obj/Debug/net7.0/footballFantasy.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/footballFantasy/obj/Debug/net7.0/footballFantasy.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/footballFantasy/obj/footballFantasy.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/footballFantasy/obj/footballFantasy.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/footballFantasy/obj/footballFantasy.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/footballFantasy/obj/footballFantasy.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/footballFantasy/obj/footballFantasy.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/footballFantasy/obj/footballFantasy.csproj.nuget.g.targets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/footballFantasy/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/footballFantasy/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/footballFantasy/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/footballFantasy/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/footballFantasy/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/footballFantasy/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/footballFantasy/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/footballFantasy/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.footballFantasy.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.footballFantasy.dir/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,6 +98,7 @@
       <workItem from="1684944640915" duration="1257000" />
       <workItem from="1684946936038" duration="2732000" />
       <workItem from="1684975954722" duration="936000" />
+      <workItem from="1684977091023" duration="866000" />
     </task>
     <servers />
   </component>

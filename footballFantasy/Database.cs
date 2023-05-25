@@ -9,4 +9,12 @@ namespace footballFantasy
             contextOptionsBuilder.UseSqlite("Data source=database.db");
         }
     }
+
+    class User
+    {
+        public string userName { get; set; }
+        public string name { get; set; }
+        public string email { get; set; }
+        public string password { get; set; }
+    }
 }

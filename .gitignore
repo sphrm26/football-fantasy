@@ -1,1 +1,3 @@
-footballFantasy.sln
+footballFantasy/bin
+footballFantasy/Migrations
+footballFantasy/database.db

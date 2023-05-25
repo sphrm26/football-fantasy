@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using footballFantasy;
+
 namespace footballFantasy
 {
     public class Program

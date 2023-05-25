@@ -8,6 +8,12 @@
   <component name="ChangeListManager">
     <list default="true" id="17a9c417-5c6a-4974-a6dc-dd45f284aeaf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.footballFantasy.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.footballFantasy.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/footballFantasy/Database.cs" beforeDir="false" afterPath="$PROJECT_DIR$/footballFantasy/Database.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/footballFantasy/obj/Debug/net7.0/footballFantasy.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/footballFantasy/obj/Debug/net7.0/footballFantasy.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/footballFantasy/obj/Debug/net7.0/footballFantasy.dll" beforeDir="false" afterPath="$PROJECT_DIR$/footballFantasy/obj/Debug/net7.0/footballFantasy.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/footballFantasy/obj/Debug/net7.0/footballFantasy.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/footballFantasy/obj/Debug/net7.0/footballFantasy.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/footballFantasy/obj/Debug/net7.0/ref/footballFantasy.dll" beforeDir="false" afterPath="$PROJECT_DIR$/footballFantasy/obj/Debug/net7.0/ref/footballFantasy.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/footballFantasy/obj/Debug/net7.0/refint/footballFantasy.dll" beforeDir="false" afterPath="$PROJECT_DIR$/footballFantasy/obj/Debug/net7.0/refint/footballFantasy.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +104,7 @@
       <workItem from="1684944640915" duration="1257000" />
       <workItem from="1684946936038" duration="2732000" />
       <workItem from="1684975954722" duration="936000" />
-      <workItem from="1684977091023" duration="866000" />
+      <workItem from="1684977091023" duration="1898000" />
     </task>
     <servers />
   </component>

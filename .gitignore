@@ -1,3 +1,6 @@
 footballFantasy/bin
 footballFantasy/Migrations
 footballFantasy/database.db
+footballFantasy/obj
+TestProject/obj
+.idea

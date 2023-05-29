@@ -9,10 +9,22 @@ namespace footballFantasy
     public class Database : DbContext
     {
         public DbSet<User> users { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder contextOptionsBuilder)
         {
             contextOptionsBuilder.UseSqlite("Data source=database.db");
         }
+    }
+
+    class saveOTP
+    {
+        [Key]
+        public string userName { get; set; }
+        public DateTime dt { get; set; }
+        public string name { get; set; }
+        public string email { get; set; }
+        public string password { get; set; }
+        public string OTP { get; set; }
     }
 
     public class User
@@ -56,18 +68,13 @@ namespace footballFantasy
                 throw new Exception("your name length must be in range 5 to 30");
             }
         }
-        public static void send(string email)
+        public static void sendOTP(string email, string code)
         {
             using (MailMessage mail = new MailMessage())
             {
                 mail.From = new MailAddress("mysmtp2sphrm26@gmail.com");
                 mail.To.Add(email);
                 mail.Subject = "football fantasy one time password";
-
-                Random rnd = new Random();
-                int randNum = rnd.Next(100000, 1000000);
-                string code = Convert.ToString(randNum);
-
                 mail.Body = $"hello\nthis is your one time password\n{code}\nnow you can signUp in football fantasy game\nhave a nice time";
 
                 using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))

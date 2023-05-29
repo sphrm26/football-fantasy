@@ -1,7 +1,3 @@
-using System.Linq.Expressions;
-using Microsoft.EntityFrameworkCore;
-using footballFantasy;
-
 namespace footballFantasy
 {
     public class Program
@@ -25,9 +21,15 @@ namespace footballFantasy
 
                     }
                 }
+                //validation
+
+                // otp
+                Random rnd = new Random();
+                int randNum = rnd.Next(100000, 1000000);
+                string code = Convert.ToString(randNum);
+                User.sendOTP(email, code);
 
                 db.users.Add(newUser);
-                // otp
                 db.SaveChanges();
 
             }

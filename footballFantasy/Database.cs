@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.IO.Compression;
+using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 
 namespace footballFantasy
@@ -21,5 +23,14 @@ namespace footballFantasy
         public string name { get; set; }
         public string email { get; set; }
         public string password { get; set; }
+
+        public static void validationEmail(string email)
+        {
+            string pattern = @"[0-9a-ZA-z]{1}[0-9a-zA-Z\.]{5,29}[0-9a-ZA-z]{1}@{1}[0-9a-zA-Z]+\.[a-zA-z]{2,}$";
+            if(!(Regex.IsMatch(email, pattern)))
+            {
+                throw new Exception("please enter a correct email address.");
+            }
+        }
     }
 }

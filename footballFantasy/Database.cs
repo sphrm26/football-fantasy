@@ -8,6 +8,7 @@ namespace footballFantasy
 {
     public class Database : DbContext
     {
+        public DbSet<WaitingUsers> waitingListUsers { get; set; }
         public DbSet<User> users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder contextOptionsBuilder)
@@ -16,7 +17,7 @@ namespace footballFantasy
         }
     }
 
-    class saveOTP
+    public class WaitingUsers
     {
         [Key]
         public string userName { get; set; }
@@ -25,6 +26,45 @@ namespace footballFantasy
         public string email { get; set; }
         public string password { get; set; }
         public string OTP { get; set; }
+
+        public WaitingUsers(string userNmae, DateTime dt, string name, string email, string username, string OTP)
+        {
+            this.userName = userNmae;
+            this.dt = dt;
+            this.name = name;
+            this.email = email;
+            this.userName = username;
+            this.password = password;
+        }
+        public bool checkExpire()
+        {
+            DateTime dt = DateTime.Now;
+            bool expired = false;
+            if (this.dt.Day != dt.Day)
+            {
+                expired = true;
+            }
+            if (this.dt.Hour != dt.Hour)
+            {
+                expired = true;
+            }
+            if (dt.Minute - this.dt.Minute > 5)
+            {
+                expired = true;
+            }
+            if (dt.Minute - this.dt.Minute == 5 && dt.Second - this.dt.Second > 0)
+            {
+                expired = true;
+            }
+            if (expired)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 
     public class User

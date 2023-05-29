@@ -21,5 +21,9 @@ namespace footballFantasy
         public string name { get; set; }
         public string email { get; set; }
         public string password { get; set; }
+        public static validation (string userName,string name,string email,string password)
+        {
+            
+        }
     }
 }

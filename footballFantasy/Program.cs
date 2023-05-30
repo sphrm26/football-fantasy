@@ -12,18 +12,23 @@ namespace footballFantasy
                     {
                         if (item.checkExpire())
                         {
+                            waitingUsers.checkAllOTPForExpire();
                             return "your OTP is expired";
                         }
-                        return "tour OTP is correct";
+                        db.users.Add(new User());
+                        db.waitingListUsers.Remove(item);
+                        db.SaveChanges();
+                        waitingUsers.checkAllOTPForExpire();
+                        return "your OTP is correct";
                     }
                 }
             }
+            waitingUsers.checkAllOTPForExpire();
             return "your OTP is incorrect";
         }
 
         public static string signup(string name, string email, string username, string password)
         {
-            User newUser = new User();
             using (var db = new Database())
             {
                 foreach (var user in db.users)
@@ -48,15 +53,12 @@ namespace footballFantasy
                 int randNum = rnd.Next(100000, 1000000);
                 string code = Convert.ToString(randNum);
                 User.sendOTP(email, code);
-                WaitingUsers newWaitUser = new WaitingUsers(username, DateTime.Now, name, email, username, code);
+                waitingUsers newWaitUser = new waitingUsers(username, DateTime.Now, name, email, username, code);
                 db.waitingListUsers.Add(newWaitUser);
                 db.SaveChanges();
                 //go to OTP check api
                 //try catch
                 // check all in databas ewaiting list
-
-                db.users.Add(newUser);
-                db.SaveChanges();
 
             }
 

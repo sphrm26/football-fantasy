@@ -15,7 +15,7 @@ namespace footballFantasy
                             waitingUsers.checkAllOTPForExpire();
                             return "your OTP is expired";
                         }
-                        db.users.Add(new User());
+                        db.users.Add(new User(item.password, item.name, item.email, item.userName));
                         db.waitingListUsers.Remove(item);
                         db.SaveChanges();
                         waitingUsers.checkAllOTPForExpire();

@@ -27,9 +27,9 @@ namespace footballFantasy
         public string password { get; set; }
         public string OTP { get; set; }
 
-        public waitingUsers(string userNmae, DateTime dt, string name, string email, string username, string OTP)
+        public waitingUsers(string Password, DateTime dt, string name, string email, string username, string OTP)
         {
-            this.userName = userNmae;
+            this.OTP = OTP;
             this.dt = dt;
             this.name = name;
             this.email = email;
@@ -69,6 +69,14 @@ namespace footballFantasy
         public string name { get; set; }
         public string email { get; set; }
         public string password { get; set; }
+
+        public User(string Password, string name, string email, string username)
+        {
+            this.name = name;
+            this.email = email;
+            this.userName = username;
+            this.password = password;
+        }
 
         public static void validationEmail(string email)
         {

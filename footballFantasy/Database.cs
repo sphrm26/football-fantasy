@@ -185,13 +185,12 @@ namespace footballFantasy
             symbolExistanceCheck(userName);
         }
 
-        public static void validationSignup(string userName, string password; string email,string name)
+        public static void validationSignup(string userName, string password, string email, string name)
         {
-
-        usernameCorrectionCheck(userName);
-        passwordCorrectionCheck(password);
-        validationEmail(email);
-        validationName(name);
+            usernameCorrectionCheck(userName);
+            passwordCorrectionCheck(password);
+            validationEmail(email);
+            validationName(name);
+        }
     }
-}
 }

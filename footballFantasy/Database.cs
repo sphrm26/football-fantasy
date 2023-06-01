@@ -1,14 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-<<<<<<< HEAD
 using System.Net.Mail;
 using System.Text.RegularExpressions;
 
-=======
-using Microsoft.EntityFrameworkCore;
-using System.Text.RegularExpressions;
->>>>>>> e3e8c486fcc9b80c64ca4dc8dfad43146be5546f
 namespace footballFantasy
 {
     public class Database : DbContext
@@ -75,7 +70,6 @@ namespace footballFantasy
         public string email { get; set; }
         public string password { get; set; }
 
-<<<<<<< HEAD
         public User(string Password, string name, string email, string username)
         {
             this.name = name;
@@ -133,38 +127,37 @@ namespace footballFantasy
                 }
             }
         }
-=======
         public static void capitalLetterCheck(string str)
         {
-            string pattern_AZ =@"(A-Z)+";
-            if (Regex.IsMatch(str,pattern_AZ))
+            string pattern_AZ = @"(A-Z)+";
+            if (Regex.IsMatch(str, pattern_AZ))
             {
-                throw new Exception ("The Username must contain capital letter ");
+                throw new Exception("The Username must contain capital letter ");
             }
         }
 
         public static void smallLetterCheck(string str)
         {
-            string pattern_az= @"(a-z)+";
-            if (Regex.IsMatch(str,pattern_az))
+            string pattern_az = @"(a-z)+";
+            if (Regex.IsMatch(str, pattern_az))
             {
-                throw new Exception ("The Username must contain small letter ");
+                throw new Exception("The Username must contain small letter ");
             }
         }
 
         public static void numExistanceCheck(string str)
         {
             string pattern_09 = @"(0-9)+";
-            if (Regex.IsMatch(str,pattern_09))
+            if (Regex.IsMatch(str, pattern_09))
             {
-                throw new Exception ("The Username must contain at least one number");
+                throw new Exception("The Username must contain at least one number");
             }
         }
 
         public static void symbolExistanceCheck(string str)
         {
             string patternSymbol = @"(\W_)+";
-            if (Regex.IsMatch(str,patternSymbol))
+            if (Regex.IsMatch(str, patternSymbol))
             {
                 throw new Exception("The Password must contain at least one Symbol");
             }
@@ -180,7 +173,7 @@ namespace footballFantasy
             numExistanceCheck(password);
             symbolExistanceCheck(password);
         }
-        public static void usernameCorrectionCheck( string userName)
+        public static void usernameCorrectionCheck(string userName)
         {
             if (userName.Length < 5 && userName.Length > 50)
             {
@@ -192,11 +185,13 @@ namespace footballFantasy
             symbolExistanceCheck(userName);
         }
 
-        public static void validationSignup(string userName , string password)
+        public static void validationSignup(string userName, string password; string email,string name)
         {
-            usernameCorrectionCheck( userName);
-            passwordCorrectionCheck( password);
-        } 
->>>>>>> e3e8c486fcc9b80c64ca4dc8dfad43146be5546f
+
+        usernameCorrectionCheck(userName);
+        passwordCorrectionCheck(password);
+        validationEmail(email);
+        validationName(name);
     }
+}
 }

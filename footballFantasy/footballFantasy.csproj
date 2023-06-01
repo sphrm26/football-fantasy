@@ -14,4 +14,8 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0-preview.4.23259.3" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="DataAccessLayer\" />
+    </ItemGroup>
+
 </Project>

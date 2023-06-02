@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.RegularExpressions;
 
 namespace footballFantasy.Model
@@ -13,12 +13,12 @@ namespace footballFantasy.Model
         public string email { get; set; }
         public string password { get; set; }
 
-        public User(string Password, string name, string email, string username)
+        public User(string password, string name, string email, string userName)
         {
             this.name = name;
             this.email = email;
-            userName = username;
-            password = password;
+            this.userName = userName;
+            this.password = password;
         }
 
         public static void validationEmail(string email)
@@ -120,5 +120,4 @@ namespace footballFantasy.Model
         }
     }
 
-}
 }

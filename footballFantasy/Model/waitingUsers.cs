@@ -12,14 +12,14 @@ namespace footballFantasy.Model
         public string password { get; set; }
         public string OTP { get; set; }
 
-        public waitingUsers(string Password, DateTime dt, string name, string email, string username, string OTP)
+        public waitingUsers(string password, DateTime dt, string name, string email, string userName, string OTP)
         {
             this.OTP = OTP;
             this.dt = dt;
             this.name = name;
             this.email = email;
-            userName = username;
-            password = password;
+            this.userName = userName;
+            this.password = password;
         }
         public bool checkExpire()
         {

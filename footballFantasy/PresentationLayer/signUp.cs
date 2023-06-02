@@ -22,17 +22,22 @@ namespace footballFantasy.PresentationLayer
 
                     }
                 }
-                //try catch
-                //BuisnessLayer.validaitonSignUp.validation(name, email, username, password);
+                try
+                {
+                    BuisnessLayer.validaitonSignUp.validation(name, email, username, password);
+                }
+                catch (Exception ex)
+                {
+                    return ex.Message;
+                }
 
                 // otp
                 string code = BuisnessLayer.OTP.OTPSet(email);
                 waitingUsers newWaitUser = new waitingUsers(username, DateTime.Now, name, email, username, code);
                 db.waitingListUsers.Add(newWaitUser);
                 db.SaveChanges();
+
                 //go to OTP check api
-                //try catch
-                // check all in databas ewaiting list
 
             }
 

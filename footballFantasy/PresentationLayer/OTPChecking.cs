@@ -1,4 +1,5 @@
-﻿using footballFantasy.Model;
+﻿using footballFantasy.BuisnessLayer;
+using footballFantasy.Model;
 
 namespace footballFantasy.PresentationLayer
 {
@@ -12,20 +13,20 @@ namespace footballFantasy.PresentationLayer
                 {
                     if (item.email == email && item.OTP == otp)
                     {
-                        if (item.checkExpire())
+                        if (expireOTP.checkExpire(item))
                         {
-                            waitingUsers.checkAllOTPForExpire();
+                            DataAccessLayer.handelExpireOTPDatabase.checkAllOTPForExpire();
                             return "your OTP is expired";
                         }
                         db.users.Add(new User(item.password, item.name, item.email, item.userName));
                         db.waitingListUsers.Remove(item);
                         db.SaveChanges();
-                        waitingUsers.checkAllOTPForExpire();
+                        DataAccessLayer.handelExpireOTPDatabase.checkAllOTPForExpire();
                         return "your OTP is correct";
                     }
                 }
             }
-            waitingUsers.checkAllOTPForExpire();
+            DataAccessLayer.handelExpireOTPDatabase.checkAllOTPForExpire();
             return "your OTP is incorrect";
         }
     }

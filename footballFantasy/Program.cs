@@ -10,6 +10,7 @@ namespace footballFantasy
             app.Run("http://localhost:3001");
             app.MapPost("/singnup/",PresentationLayer.signUp.signup);
             app.MapPost("/OTPCheck/", PresentationLayer.OTPChecking.OTPCheck);
+            app.MapGet("/login/", PresentationLayer.logIn.login);
         }
     }
 }

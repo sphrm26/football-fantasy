@@ -1,6 +1,13 @@
+using footballFantasy.Model;
+using Microsoft.IdentityModel.Tokens;
+using Newtonsoft;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+
 namespace footballFantasy.PresentationLayer
 {
-    public class login
+    public class logIn
     {
         public static string Get_Token(string USERname)
         {
@@ -29,18 +36,18 @@ namespace footballFantasy.PresentationLayer
         }
         public static string login(string username, string password)
         {
-            public static string signup(string name, string email, string username, string password)
+            using (var db = new Database())
             {
-                using (var db = new Database())
+                foreach (var user in db.users)
                 {
-                    foreach (var user in db.users)
+                    if (username == user.userName && password == user.password)
                     {
-                        if (username == user.userName&&password==user.passWord)
-                        {
-                            string token = Get_Token(username, password);
-                            return token;
-                        }
+                        string token = Get_Token(username);
+                        return token;
                     }
                 }
             }
+            return "your user name is not found";
         }
+    }
+}

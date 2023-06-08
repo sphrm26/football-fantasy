@@ -1,13 +1,16 @@
 ﻿using footballFantasy.Model;
+using System.Net.Mail;
 
 namespace footballFantasy.PresentationLayer
 {
     public class signUp
     {
-        public static string signup(string name, string email, string username, string password)
+        public static string signup(User newUser)
         {
+            string name = newUser.name, email = newUser.email, username = newUser.userName, password = newUser.password;
             using (var db = new Database())
             {
+                //foreach(var in db.waituser)
                 foreach (var user in db.users)
                 {
                     if (username == user.userName)
@@ -39,9 +42,9 @@ namespace footballFantasy.PresentationLayer
 
                 //go to OTP check api
 
+            return $"{code}\n{email}\nYOUR SIGN UP IS OK !!";
             }
 
-            return "YOUR SIGN UP IS OK !!";
 
         }
     }

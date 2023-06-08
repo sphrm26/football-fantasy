@@ -9,7 +9,7 @@ namespace footballFantasy.Model
     public class Database : DbContext
     {
         public DbSet<waitingUsers> waitingListUsers { get; set; }
-        public DbSet<User>? users { get; set; }
+        public DbSet<User> users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder contextOptionsBuilder)
         {

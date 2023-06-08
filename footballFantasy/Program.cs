@@ -1,3 +1,5 @@
+using footballFantasy.Model;
+
 namespace footballFantasy
 {
     public class Program
@@ -7,10 +9,12 @@ namespace footballFantasy
             
             var builder = WebApplication.CreateBuilder(args);
             var app = builder.Build();
-            app.Run("http://localhost:3001");
             app.MapPost("/singnup/",PresentationLayer.signUp.signup);
             app.MapPost("/OTPCheck/", PresentationLayer.OTPChecking.OTPCheck);
             app.MapGet("/login/", PresentationLayer.logIn.login);
+            //for checking all users
+            app.MapGet("/getAllWaitList/",PresentationLayer.getAllWaitList.getAllWaitListAPI);
+            app.Run("http://localhost:3001");
         }
     }
 }

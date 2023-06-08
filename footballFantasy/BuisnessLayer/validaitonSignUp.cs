@@ -18,22 +18,13 @@ namespace footballFantasy.BuisnessLayer
         }
         public static void validationName(string name)
         {
-            if (name == null)
+            if (name.Length == 0)
             {
                 throw new Exception("please enter your name");
             }
-            Regex regex = new Regex("^(?=.*[a-z])(?=.*\\d).+$");
-            if (!Regex.IsMatch(name, "\\d"))
+            if (name.Length > 30)
             {
-                throw new Exception("No number found.");
-            }
-            else if (!Regex.IsMatch(name, "[a-z]"))
-            {
-                throw new Exception("No letter found.");
-            }
-            if (name.Length >= 30 && name.Length <= 5)
-            {
-                throw new Exception("your name length must be in range 5 to 30");
+                throw new Exception("maximum length of name is 30 characters");
             }
         }
         public static void capitalLetterCheck(string str)

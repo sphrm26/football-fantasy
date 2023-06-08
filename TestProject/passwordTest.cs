@@ -17,6 +17,11 @@ public class passwordTest
     [TestMethod]
     public void minlendgthCheck()
     {
-        footballFantasy.BuisnessLayer.validaitonSignUp.passwordCorrectionCheck("DKC5FDFdCKk");
+        footballFantasy.BuisnessLayer.validaitonSignUp.passwordCorrectionCheck("DKC5FKk");
+    }
+    [TestMethod]
+    public void correctForm()
+    {
+        footballFantasy.BuisnessLayer.validaitonSignUp.passwordCorrectionCheck("dkfxDXK32");
     }
 }

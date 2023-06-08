@@ -41,7 +41,7 @@ namespace footballFantasy.BuisnessLayer
             string pattern_AZ = @"[A-Z]+";
             if (!Regex.IsMatch(str, pattern_AZ))
             {
-                throw new Exception("The Username must contain capital letter ");
+                throw new Exception("The pass word must contain capital letter ");
             }
         }
 
@@ -50,7 +50,7 @@ namespace footballFantasy.BuisnessLayer
             string pattern_az = @"[a-z]+";
             if (!Regex.IsMatch(str, pattern_az))
             {
-                throw new Exception("The Username must contain small letter ");
+                throw new Exception("The pass word must contain small letter ");
             }
         }
 
@@ -59,7 +59,7 @@ namespace footballFantasy.BuisnessLayer
             string pattern_09 = @"[0-9]+";
             if (!Regex.IsMatch(str, pattern_09))
             {
-                throw new Exception("The Username must contain at least one number");
+                throw new Exception("The pass word must contain at least one number");
             }
         }
         public static void passwordCorrectionCheck(string password)
@@ -75,14 +75,16 @@ namespace footballFantasy.BuisnessLayer
 
         public static void usernameCorrectionCheck(string userName)
         {
-            if (userName.Length < 5 && userName.Length > 50)
+            if (userName.Length < 5 || userName.Length > 50)
             {
                 throw new Exception("The Username length must be in range 5-50");
             }
 
-            smallLetterCheck(userName);
-            capitalLetterCheck(userName);
-            numExistanceCheck(userName);
+            string pattern = @"^[A-Za-z0-9]*$";
+            if (!Regex.IsMatch(userName, pattern))
+            {
+                throw new Exception("you can only use numbers and letters for user name");
+            }
         }
 
 

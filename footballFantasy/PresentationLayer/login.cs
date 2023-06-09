@@ -1,4 +1,5 @@
-using footballFantasy.Model;
+using footballFantasy.BuisnessLayer;
+using footballFantasy.DataAccessLayer;
 
 namespace footballFantasy.PresentationLayer
 {
@@ -6,18 +7,14 @@ namespace footballFantasy.PresentationLayer
     {
         public static string login(string username, string password)
         {
-            using (var db = new Database())
+            try
             {
-                foreach (var user in db.users)
-                {
-                    if (username == user.userName && password == user.password)
-                    {
-                        string token = BuisnessLayer.tokenHandel.Get_Token(username);
-                        return token;
-                    }
-                }
+                return UserHandel.getToken(username, password);
             }
-            return "your user name is not found";
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
     }
 }

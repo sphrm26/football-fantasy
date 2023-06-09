@@ -1,4 +1,5 @@
 ﻿using footballFantasy.BuisnessLayer;
+using footballFantasy.DataAccessLayer;
 using footballFantasy.Model;
 
 namespace footballFantasy.PresentationLayer
@@ -7,27 +8,23 @@ namespace footballFantasy.PresentationLayer
     {
         public static string OTPCheck(string otp, string email)
         {
-            using (var db = new Database())
+            var waitUser = handelUserDatabase.findWaitUser(otp, email);
+            if (waitUser == null)
             {
-                foreach (var item in db.waitingListUsers)
-                {
-                    if (item.email == email && item.OTP == otp)
-                    {
-                        if (expireOTP.checkExpire(item))
-                        {
-                            DataAccessLayer.handelExpireOTPDatabase.checkAllOTPForExpire();
-                            return "your OTP is expired";
-                        }
-                        db.users.Add(new User(item.password, item.name, item.email, item.userName));
-                        db.waitingListUsers.Remove(item);
-                        db.SaveChanges();
-                        DataAccessLayer.handelExpireOTPDatabase.checkAllOTPForExpire();
-                        return "your OTP is correct";
-                    }
-                }
+                handelExpireOTPDatabase.checkAllOTPForExpire();
+                return "your OTP is incorrect";
             }
-            DataAccessLayer.handelExpireOTPDatabase.checkAllOTPForExpire();
-            return "your OTP is incorrect";
+            if (expireOTP.checkExpire(waitUser))
+            {
+                handelExpireOTPDatabase.checkAllOTPForExpire();
+                return "your OTP is expired";
+            }
+            //add to user class
+            User newUser = new User(waitUser.password, waitUser.name, waitUser.email, waitUser.userName);
+            handelUserDatabase.addToUsers(newUser);
+            //remove from wait list
+            handelUserDatabase.removeFromWaitList(email);
+            return "your OTP is correct\nsuccessfuly sign up";
         }
     }
 }

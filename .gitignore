@@ -3,6 +3,8 @@ footballFantasy/Migrations
 footballFantasy/database.db
 footballFantasy/obj
 TestProject/obj
+database.db-wal
+database.db-shm
 .idea
 .vs
 footballFantasy.sln

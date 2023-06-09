@@ -19,10 +19,10 @@ namespace footballFantasy
             app.MapGet("/getAllUser/", PresentationLayer.getAllUsers.getAllUsersAPI);
 
             //for deleting wait user
-            app.MapGet("/deletWaitUser/", PresentationLayer.deletWaitList.cleaning);
+            app.MapPost("/deletWaitUser/", PresentationLayer.deletWaitList.cleaning);
 
             //for deleting user
-            app.MapGet("/deletUser/", PresentationLayer.deletUsers.cleaning);
+            app.MapPost("/deletUser/", PresentationLayer.deletUsers.cleaning);
 
             app.Run("http://localhost:3001");
         }

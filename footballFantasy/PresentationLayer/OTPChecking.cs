@@ -23,7 +23,7 @@ namespace footballFantasy.PresentationLayer
             User newUser = new User(waitUser.password, waitUser.name, waitUser.email, waitUser.userName);
             handelUserDatabase.addToUsers(newUser);
             //remove from wait list
-            handelUserDatabase.removeFromWaitList(waitUser);
+            handelUserDatabase.removeFromWaitList(email);
             return "your OTP is correct\nsuccessfuly sign up";
         }
     }

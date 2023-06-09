@@ -80,13 +80,13 @@ namespace footballFantasy.DataAccessLayer
                 db.SaveChanges();
             }
         }
-        public static void removeFromWaitList(waitingUsers waitUser)
+        public static void removeFromWaitList(string email)
         {
             using (var db = new Database())
             {
                 foreach (var record in db.waitingListUsers)
                 {
-                    if (waitUser == record)
+                    if (email == record.email)
                     {
                         db.waitingListUsers.Remove(record);
                         db.SaveChanges();

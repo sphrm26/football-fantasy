@@ -1,4 +1,5 @@
-﻿using footballFantasy.Model;
+﻿using footballFantasy.BuisnessLayer;
+using footballFantasy.DataAccessLayer;
 
 namespace footballFantasy.PresentationLayer
 {
@@ -6,27 +7,15 @@ namespace footballFantasy.PresentationLayer
     {
         public static string cleaning(string adminPassword, string adminName)
         {
-            bool access = false;
-            foreach (var admin in BuisnessLayer.adminHandel.admins)
+            try
             {
-                if (adminName == admin.Name && adminPassword == admin.password)
-                {
-                    access = true;
-                    break;
-                }
+                adminHandel.access(adminPassword, adminName);
             }
-            if (!access)
+            catch (Exception e)
             {
                 return "access denied";
             }
-            using (var db = new Database())
-            {
-                foreach (var item in db.users)
-                {
-                    db.users.Remove(item);
-                }
-                db.SaveChanges();
-            }
+            handelUserDatabase.deletAllUsers();
             return "successfuly deleted";
         }
     }

@@ -52,7 +52,7 @@ namespace footballFantasy.DataAccessLayer
             }
             return false;
         }
-        public static bool findUserName(string userName,string password)
+        public static bool findUserName(string userName, string password)
         {
             using (var db = new Database())
             {
@@ -84,9 +84,9 @@ namespace footballFantasy.DataAccessLayer
         {
             using (var db = new Database())
             {
-                foreach(var record in db.waitingListUsers)
+                foreach (var record in db.waitingListUsers)
                 {
-                    if(waitUser == record)
+                    if (waitUser == record)
                     {
                         db.waitingListUsers.Remove(record);
                         db.SaveChanges();
@@ -99,6 +99,64 @@ namespace footballFantasy.DataAccessLayer
             using (var db = new Database())
             {
                 db.users.Add(newUser);
+                db.SaveChanges();
+            }
+        }
+        public static List<Object> getAllWaitList()
+        {
+            List<Object> response = new List<Object>();
+            using (var db = new Database())
+            {
+                foreach (var WaitUser in db.waitingListUsers)
+                {
+                    response.Add(new
+                    {
+                        name = WaitUser.name,
+                        email = WaitUser.email,
+                        userName = WaitUser.userName,
+                        password = WaitUser.password
+                    });
+                }
+            }
+            return response;
+        }
+        public static List<Object> getAllUser()
+        {
+            List<Object> response = new List<Object>();
+            using (var db = new Database())
+            {
+                foreach (var user in db.users)
+                {
+                    response.Add(new
+                    {
+                        name = user.name,
+                        email = user.email,
+                        userName = user.userName,
+                        password = user.password
+                    });
+                }
+            }
+            return response;
+        }
+        public static void deletAllWaitList()
+        {
+            using (var db = new Database())
+            {
+                foreach (var item in db.waitingListUsers)
+                {
+                    db.waitingListUsers.Remove(item);
+                }
+                db.SaveChanges();
+            }
+        }
+        public static void deletAllUsers()
+        {
+            using (var db = new Database())
+            {
+                foreach (var item in db.users)
+                {
+                    db.users.Remove(item);
+                }
                 db.SaveChanges();
             }
         }

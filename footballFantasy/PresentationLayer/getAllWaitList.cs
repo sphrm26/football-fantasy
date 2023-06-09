@@ -1,4 +1,5 @@
-﻿using footballFantasy.Model;
+﻿using footballFantasy.BuisnessLayer;
+using footballFantasy.DataAccessLayer;
 
 namespace footballFantasy.PresentationLayer
 {
@@ -6,36 +7,15 @@ namespace footballFantasy.PresentationLayer
     {
         public static List<Object> getAllWaitListAPI(string adminPassword, string adminName)
         {
-            List<Object> response = new List<Object>();
-            bool access = false;
-            foreach (var admin in BuisnessLayer.adminHandel.admins)
+            try
             {
-                if (adminName == admin.Name && adminPassword == admin.password)
-                {
-                    access = true;
-                    break;
-                }
+                adminHandel.access(adminPassword, adminName);
             }
-            if (!access)
+            catch (Exception e)
             {
                 return null;
             }
-            using (var db = new Database())
-            {
-                foreach (var WaitUser in db.waitingListUsers)
-                {
-                    response.Add(new
-                    {
-                        name = WaitUser.name,
-                        email = WaitUser.email,
-                        userName = WaitUser.userName,
-                        password = WaitUser.password
-                    });
-                }
-            }
-
-
-            return response;
+            return handelUserDatabase.getAllWaitList();
         }
     }
 }

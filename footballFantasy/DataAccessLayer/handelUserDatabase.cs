@@ -64,11 +64,41 @@ namespace footballFantasy.DataAccessLayer
             }
             return false;
         }
+        public static waitingUsers? findWaitUser(string otp, string email)
+        {
+            using (var db = new Database())
+            {
+                var record = db.waitingListUsers.FirstOrDefault(record => record.email == email && record.OTP == otp);
+                return record;
+            }
+        }
         public static void addToWaitList(waitingUsers newWaitUser)
         {
             using (var db = new Database())
             {
                 db.waitingListUsers.Add(newWaitUser);
+                db.SaveChanges();
+            }
+        }
+        public static void removeFromWaitList(waitingUsers waitUser)
+        {
+            using (var db = new Database())
+            {
+                foreach(var record in db.waitingListUsers)
+                {
+                    if(waitUser == record)
+                    {
+                        db.waitingListUsers.Remove(record);
+                        db.SaveChanges();
+                    }
+                }
+            }
+        }
+        public static void addToUsers(User newUser)
+        {
+            using (var db = new Database())
+            {
+                db.users.Add(newUser);
                 db.SaveChanges();
             }
         }

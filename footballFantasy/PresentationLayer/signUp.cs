@@ -1,6 +1,6 @@
-﻿using footballFantasy.DataAccessLayer;
+﻿using footballFantasy.BuisnessLayer;
+using footballFantasy.DataAccessLayer;
 using footballFantasy.Model;
-using footballFantasy.BuisnessLayer;
 
 namespace footballFantasy.PresentationLayer
 {
@@ -28,8 +28,8 @@ namespace footballFantasy.PresentationLayer
             }
 
             // otp
-            string code = OTP.OTPSet(email);
-            waitingUsers newWaitUser = new waitingUsers(username, DateTime.Now, name, email, username, code);
+            string code = OTP.OTPSet(Convert.ToString(email));
+            waitingUsers newWaitUser = new waitingUsers(password, DateTime.Now, name, email, username, code);
             handelUserDatabase.addToWaitList(newWaitUser);
 
             return "please enter your otp";

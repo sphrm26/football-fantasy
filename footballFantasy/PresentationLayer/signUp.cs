@@ -1,5 +1,6 @@
-﻿using footballFantasy.Model;
-using System.Net.Mail;
+﻿using footballFantasy.DataAccessLayer;
+using footballFantasy.Model;
+using footballFantasy.BuisnessLayer;
 
 namespace footballFantasy.PresentationLayer
 {
@@ -8,44 +9,32 @@ namespace footballFantasy.PresentationLayer
         public static string signup(User newUser)
         {
             string name = newUser.name, email = newUser.email, username = newUser.userName, password = newUser.password;
-            using (var db = new Database())
+            try
             {
-                //foreach(var in db.waituser)
-                foreach (var user in db.users)
-                {
-                    if (username == user.userName)
-                    {
-                        return "YOUR USERNAME IS ALREADY EXIST ";
-
-                    }
-
-                    if (email == user.email)
-                    {
-                        return "YOUR EMAIL IS ALREADY EXIST";
-
-                    }
-                }
-                try
-                {
-                    BuisnessLayer.validaitonSignUp.validation(name, email, username, password);
-                }
-                catch (Exception ex)
-                {
-                    return ex.Message;
-                }
-
-                // otp
-                string code = BuisnessLayer.OTP.OTPSet(email);
-                waitingUsers newWaitUser = new waitingUsers(username, DateTime.Now, name, email, username, code);
-                db.waitingListUsers.Add(newWaitUser);
-                db.SaveChanges();
-
-                //go to OTP check api
-
-            return $"{code}\n{email}\nYOUR SIGN UP IS OK !!";
+                UserHandel.sameUserCheck(email, username);
+                UserHandel.sameWaitUserCheck(email, username);
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            try
+            {
+                validaitonSignUp.validation(name, email, username, password);
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
             }
 
+            // otp
+            string code = OTP.OTPSet(email);
+            waitingUsers newWaitUser = new waitingUsers(username, DateTime.Now, name, email, username, code);
+            handelUserDatabase.addToWaitList(newWaitUser);
 
+            return "please enter your otp";
+
+            //go to OTP check api
         }
     }
 }

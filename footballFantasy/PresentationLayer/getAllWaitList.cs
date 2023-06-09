@@ -18,9 +18,7 @@ namespace footballFantasy.PresentationLayer
             }
             if (!access)
             {
-                return new List<object> {new
-                { error = "access denied"
-                } };
+                return null;
             }
             using (var db = new Database())
             {

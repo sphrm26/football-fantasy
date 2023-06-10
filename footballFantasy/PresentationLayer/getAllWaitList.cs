@@ -15,7 +15,7 @@ namespace footballFantasy.PresentationLayer
             {
                 return null;
             }
-            return handelUserDatabase.getAllWaitList();
+            return adminHandel.getAllWaitList();
         }
     }
 }

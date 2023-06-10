@@ -16,7 +16,7 @@ namespace footballFantasy.PresentationLayer
             {
                 return "access denied";
             }
-            handelUserDatabase.deletAllWaitList();
+            adminHandel.deletAllWaitList();
             return "successfuly deleted";
         }
     }

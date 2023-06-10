@@ -29,8 +29,7 @@ namespace footballFantasy.PresentationLayer
 
             // otp
             string code = OTP.OTPSet(Convert.ToString(email));
-            waitingUsers newWaitUser = new waitingUsers(password, DateTime.Now, name, email, username, code);
-            handelUserDatabase.addToWaitList(newWaitUser);
+            UserHandel.makeNewWaitUser(password,name,email,username,code);
 
             return "please enter your otp";
 

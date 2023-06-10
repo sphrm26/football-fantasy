@@ -36,5 +36,10 @@ namespace footballFantasy.BuisnessLayer
             }
             throw new Exception("your user name is incorrect");
         }
+        public static void makeNewWaitUser(string password, string name, string email, string username, string code)
+        {
+            waitingUsers newWaitUser = new waitingUsers(password, DateTime.Now, name, email, username, code);
+            handelUserDatabase.addToWaitList(newWaitUser);
+        }
     }
 }

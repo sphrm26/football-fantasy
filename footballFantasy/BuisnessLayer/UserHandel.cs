@@ -27,14 +27,21 @@ namespace footballFantasy.BuisnessLayer
                 throw new Exception("your user name is already exist");
             }
         }
-        public static string getToken(string username, string password)
+        public static string login(string userInformation, string password)
         {
-            if (handelUserDatabase.findUserName(username, password))
+            string userName;
+            if (userInformation.Contains("@"))
             {
-                string token = tokenHandel.Get_Token(username);
-                return token;
+                //find user name
+                userName = handelUserDatabase.findUserByEmail(userInformation, password);
             }
-            throw new Exception("your user name is incorrect");
+            else
+            {
+                //find email
+                userName = handelUserDatabase.findUserByUserName(userInformation, password);
+            }
+            string token = tokenHandel.Get_Token(userName);
+            return token;
         }
         public static void makeNewWaitUser(string password, string name, string email, string username, string code)
         {

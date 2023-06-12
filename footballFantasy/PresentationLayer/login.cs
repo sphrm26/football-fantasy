@@ -5,11 +5,11 @@ namespace footballFantasy.PresentationLayer
 {
     public class logIn
     {
-        public static string login(string username, string password)
+        public static string login(string userInformation, string password)
         {
             try
             {
-                return UserHandel.getToken(username, password);
+                return UserHandel.login(userInformation, password);
             }
             catch (Exception ex)
             {

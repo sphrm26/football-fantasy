@@ -180,5 +180,14 @@ namespace footballFantasy.DataAccessLayer
                 db.SaveChanges();
             }
         }
+        public static User? findUserByEmailAndUserName(string email, string userName)
+        {
+
+            using (var db = new Database())
+            {
+                var record = db.users.FirstOrDefault(record => record.email == email && record.userName == userName);
+                return record;
+            }
+        }
     }
 }

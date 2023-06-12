@@ -5,6 +5,14 @@ namespace footballFantasy.BuisnessLayer
 {
     public class UserHandel
     {
+
+        public static void findUserByEmailAndUserName(string email, string userName)
+        {
+            if (handelUserDatabase.findUserByEmailAndUserName(email, userName) == null)
+            {
+                throw new Exception("your email or user name is incorrect!");
+            }
+        }
         public static void sameUserCheck(string email, string username)
         {
             if (DataAccessLayer.handelUserDatabase.isSameEmailUserFind(email))
@@ -48,26 +56,29 @@ namespace footballFantasy.BuisnessLayer
             waitingUsers newWaitUser = new waitingUsers(password, DateTime.Now, name, email, username, code);
             handelUserDatabase.addToWaitList(newWaitUser);
         }
-        public static string OTPCheck(string otp, string email)
+        public static void addUser(waitingUsers waitUser, string email)
+        {
+            //add to user class
+            User newUser = new User(waitUser.password, waitUser.name, waitUser.email, waitUser.userName);
+            handelUserDatabase.addToUsers(newUser);
+            //remove from wait list
+            handelUserDatabase.removeFromWaitList(email);
+        }
+        public static waitingUsers OTPCheck(string otp, string email)
         {
 
             var waitUser = handelUserDatabase.findWaitUser(otp, email);
             if (waitUser == null)
             {
                 handelExpireOTPDatabase.checkAllOTPForExpire();
-                return "your OTP is incorrect";
+                throw new Exception("your OTP is incorrect");
             }
             if (expireOTP.checkExpire(waitUser))
             {
                 handelExpireOTPDatabase.checkAllOTPForExpire();
-                return "your OTP is expired";
+                throw new Exception("your OTP is expired");
             }
-            //add to user class
-            User newUser = new User(waitUser.password, waitUser.name, waitUser.email, waitUser.userName);
-            handelUserDatabase.addToUsers(newUser);
-            //remove from wait list
-            handelUserDatabase.removeFromWaitList(email);
-            return "your OTP is correct\nsuccessfuly sign up";
+            return waitUser;
         }
     }
 }

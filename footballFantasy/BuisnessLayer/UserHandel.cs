@@ -64,6 +64,13 @@ namespace footballFantasy.BuisnessLayer
             //remove from wait list
             handelUserDatabase.removeFromWaitList(email);
         }
+        public static void changeUserPassword(waitingUsers waitUser, string email)
+        {
+            //changing user password
+            handelUserDatabase.changingPassword(email,waitUser.password);
+            //remove from wait list
+            handelUserDatabase.removeFromWaitList(email);
+        }
         public static waitingUsers OTPCheck(string otp, string email)
         {
 

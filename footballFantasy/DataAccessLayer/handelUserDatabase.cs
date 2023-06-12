@@ -180,9 +180,17 @@ namespace footballFantasy.DataAccessLayer
                 db.SaveChanges();
             }
         }
+        public static void changingPassword(string email, string password)
+        {
+            using (var db = new Database())
+            {
+                var record = db.users.FirstOrDefault(record => record.email == email);
+                record.password = password;
+                db.SaveChanges();
+            }
+        }
         public static User? findUserByEmailAndUserName(string email, string userName)
         {
-
             using (var db = new Database())
             {
                 var record = db.users.FirstOrDefault(record => record.email == email && record.userName == userName);

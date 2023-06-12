@@ -1,24 +1,34 @@
 ﻿using footballFantasy.BuisnessLayer;
+using footballFantasy.Model;
 
 namespace footballFantasy.PresentationLayer
 {
     public class forgetPassWord
     {
-        public static string getOTP(string email, string newPassword, string OTP)
+        public static string getOTP(string email, string newPassword, string otp)
         {
             //validation password
             try
             {
                 validaitonSignUp.passwordCorrectionCheck(newPassword);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return e.Message;
             }
             //check correct OTP
-            
+            waitingUsers user;
+            try
+            {
+                user = UserHandel.OTPCheck(otp, email);
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
             //add new user
             //remove wait user
+            UserHandel.changeUserPassword(user, user.email);
             return "your password successfuly changed";
         }
         public static string remakePassword(string email, string userName)

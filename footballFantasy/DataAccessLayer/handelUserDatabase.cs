@@ -52,36 +52,20 @@ namespace footballFantasy.DataAccessLayer
             }
             return false;
         }
-        public static string findUserByEmail(string email, string password)
+        public static User? findUserByemail(string email)
         {
             using (var db = new Database())
             {
                 var record = db.users.FirstOrDefault(record => record.email == email);
-                if (record == null)
-                {
-                    throw new Exception("your email not found!");
-                }
-                if (record.password != password)
-                {
-                    throw new Exception("your password is not correct!");
-                }
-                return record.userName;
+                return record;
             }
         }
-        public static string findUserByUserName(string userName, string password)
+        public static User? findUserByUserName(string userName)
         {
             using (var db = new Database())
             {
                 var record = db.users.FirstOrDefault(record => record.userName == userName);
-                if (record == null)
-                {
-                    throw new Exception("your user name not found!");
-                }
-                if (record.password != password)
-                {
-                    throw new Exception("your password is not correct!");
-                }
-                return record.userName;
+                return record;
             }
         }
         public static waitingUsers? findWaitUser(string otp, string email)

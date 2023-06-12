@@ -37,18 +37,34 @@ namespace footballFantasy.BuisnessLayer
         }
         public static string login(string userInformation, string password)
         {
-            string userName;
+            User user;
             if (userInformation.Contains("@"))
             {
-                //find user name
-                userName = handelUserDatabase.findUserByEmail(userInformation, password);
+                //find email
+                user = handelUserDatabase.findUserByemail(userInformation);
+                if (user == null)
+                {
+                    throw new Exception("your email not found!");
+                }
+                if (user.password != password)
+                {
+                    throw new Exception("your password is not correct!");
+                }
             }
             else
             {
-                //find email
-                userName = handelUserDatabase.findUserByUserName(userInformation, password);
+                //find user name
+                user = handelUserDatabase.findUserByUserName(userInformation);
+                if (user == null)
+                {
+                    throw new Exception("your user name not found!");
+                }
+                if (user.password != password)
+                {
+                    throw new Exception("your password is not correct!");
+                }
             }
-            string token = tokenHandel.Get_Token(userName);
+            string token = tokenHandel.Get_Token(user.userName);
             return token;
         }
         public static void makeNewWaitUser(string password, string name, string email, string username, string code)
@@ -67,7 +83,7 @@ namespace footballFantasy.BuisnessLayer
         public static void changeUserPassword(waitingUsers waitUser, string email)
         {
             //changing user password
-            handelUserDatabase.changingPassword(email,waitUser.password);
+            handelUserDatabase.changingPassword(email, waitUser.password);
             //remove from wait list
             handelUserDatabase.removeFromWaitList(email);
         }

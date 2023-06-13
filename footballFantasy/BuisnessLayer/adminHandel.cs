@@ -4,7 +4,7 @@ namespace footballFantasy.BuisnessLayer
 {
     public static class adminHandel
     {
-        public static List<admin> admins = new List<admin>() { new admin("Sepehr", "sphrm26sphrm26") };
+        public static List<admin> admins = new List<admin>() { new admin("Sepehr", "sphrm26sphrm26"),new admin("Hassan","hasaniio82"),new admin("Amir","amirali1383"),new admin("Saleh","mssn2004")};
         public static void access(string adminPassword, string adminName)
         {
             foreach (var admin in admins)

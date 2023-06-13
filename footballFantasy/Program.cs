@@ -1,5 +1,3 @@
-using footballFantasy.Model;
-
 namespace footballFantasy
 {
     public class Program
@@ -9,11 +7,13 @@ namespace footballFantasy
 
             var builder = WebApplication.CreateBuilder(args);
             var app = builder.Build();
-            app.MapPost("/signup/",PresentationLayer.signUp.signup);
+            app.MapPost("/signup/", PresentationLayer.signUp.signup);
             app.MapPost("/OTPCheck/", PresentationLayer.OTPChecking.OTPCheck);
             app.MapGet("/login/", PresentationLayer.logIn.login);
+            app.MapPost("/forgetPassword/", PresentationLayer.forgetPassWord.remakePassword);
+            app.MapPost("/getOTP/", PresentationLayer.forgetPassWord.getOTP);
             //for checking all waitusers
-            app.MapGet("/getAllWaitList/",PresentationLayer.getAllWaitList.getAllWaitListAPI);
+            app.MapGet("/getAllWaitList/", PresentationLayer.getAllWaitList.getAllWaitListAPI);
 
             //for checking all users
             app.MapGet("/getAllUser/", PresentationLayer.getAllUsers.getAllUsersAPI);

@@ -4,7 +4,7 @@ namespace footballFantasy.BuisnessLayer
 {
     public class OTP
     {
-        public static void sendOTP(string email, string code)
+        private static void sendOTP(string email, string code)
         {
             using (MailMessage mail = new MailMessage())
             {

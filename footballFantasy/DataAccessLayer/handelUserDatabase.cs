@@ -52,17 +52,21 @@ namespace footballFantasy.DataAccessLayer
             }
             return false;
         }
-        public static bool findUserName(string userName, string password)
+        public static User? findUserByemail(string email)
         {
             using (var db = new Database())
             {
-                var record = db.users.FirstOrDefault(record => record.userName == userName && record.password == password);
-                if (record != null)
-                {
-                    return true;
-                }
+                var record = db.users.FirstOrDefault(record => record.email == email);
+                return record;
             }
-            return false;
+        }
+        public static User? findUserByUserName(string userName)
+        {
+            using (var db = new Database())
+            {
+                var record = db.users.FirstOrDefault(record => record.userName == userName);
+                return record;
+            }
         }
         public static waitingUsers? findWaitUser(string otp, string email)
         {
@@ -158,6 +162,23 @@ namespace footballFantasy.DataAccessLayer
                     db.users.Remove(item);
                 }
                 db.SaveChanges();
+            }
+        }
+        public static void changingPassword(string email, string password)
+        {
+            using (var db = new Database())
+            {
+                var record = db.users.FirstOrDefault(record => record.email == email);
+                record.password = password;
+                db.SaveChanges();
+            }
+        }
+        public static User? findUserByEmailAndUserName(string email, string userName)
+        {
+            using (var db = new Database())
+            {
+                var record = db.users.FirstOrDefault(record => record.email == email && record.userName == userName);
+                return record;
             }
         }
     }

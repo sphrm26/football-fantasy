@@ -80,10 +80,10 @@ namespace footballFantasy.BuisnessLayer
             //remove from wait list
             handelUserDatabase.removeFromWaitList(email);
         }
-        public static void changeUserPassword(waitingUsers waitUser, string email)
+        public static void changeUserPassword(string password, string email)
         {
             //changing user password
-            handelUserDatabase.changingPassword(email, waitUser.password);
+            handelUserDatabase.changingPassword(email, password);
             //remove from wait list
             handelUserDatabase.removeFromWaitList(email);
         }

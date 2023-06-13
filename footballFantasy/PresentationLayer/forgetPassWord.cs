@@ -28,7 +28,7 @@ namespace footballFantasy.PresentationLayer
             }
             //add new user
             //remove wait user
-            UserHandel.changeUserPassword(user, user.email);
+            UserHandel.changeUserPassword(newPassword, user.email);
             return "your password successfuly changed";
         }
         public static string remakePassword(string email, string userName)

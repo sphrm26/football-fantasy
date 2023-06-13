@@ -59,6 +59,11 @@ namespace footballFantasy.BuisnessLayer
             {
                 throw new Exception("The Password length must be in range 8-30");
             }
+            string pattern = @"^[A-Za-z0-9@#$%^&*+=_!]*$";
+            if (!Regex.IsMatch(password, pattern))
+            {
+                throw new Exception("you can only use numbers and letters and this symboles {@ # $ % ^ & * + = _ !} for password");
+            }
             smallLetterCheck(password);
             capitalLetterCheck(password);
             numExistanceCheck(password);

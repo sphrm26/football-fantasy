@@ -11,7 +11,7 @@ namespace footballFantasy.BuisnessLayer
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             Stream resStream = response.GetResponseStream();
             StreamReader reader = new StreamReader(resStream);
-            return reader.ReadToEnd();
+            string str= reader.ReadToEnd();
         }
     }
 }

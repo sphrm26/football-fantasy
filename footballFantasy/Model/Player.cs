@@ -9,4 +9,5 @@ public class Player
     public string second_name { get; set; }
     public int team { get; set; }
     public int element_type { get; set; }
+    public int event_points { get; set; }
 }

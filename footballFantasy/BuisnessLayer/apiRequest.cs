@@ -1,17 +1,20 @@
-﻿using System.Net;
+﻿using footballFantasy.Model;
+using ServiceStack;
+using System;
 
 namespace footballFantasy.BuisnessLayer
 {
-    public class Class
+    public class Response
     {
-        public static string request()
+        public List<Player> player_seter { get; set; }
+    }
+    public class apiRequest
+    {
+      public void  json2csharp()
         {
+ 
             string url = "https://fantasy.premierleague.com/api/bootstrap-static/";
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream resStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(resStream);
-            string str= reader.ReadToEnd();
+            var response = url.GetJsonFromUrl().FromJson<Response>();
         }
     }
 }

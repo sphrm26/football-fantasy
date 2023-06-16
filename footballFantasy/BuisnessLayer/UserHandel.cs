@@ -103,5 +103,16 @@ namespace footballFantasy.BuisnessLayer
             }
             return waitUser;
         }
+
+        public static User? GetUserByToken(string token)
+        {
+            string userName =  tokenHandel.decoding_Token(token);
+          return handelUserDatabase.findUserByUserName(userName);
+        }
+
+        public static List<object> getAllPlayers(User user)
+        {
+            
+        }
     }
 }

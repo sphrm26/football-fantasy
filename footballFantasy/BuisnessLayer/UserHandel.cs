@@ -112,7 +112,12 @@ namespace footballFantasy.BuisnessLayer
 
         public static List<object> getAllPlayers(User user)
         {
-            
+            List<object> result = new List<object>();
+            foreach(var player in user.team.getAllPlater())
+            {
+                result.Add(player);
+            }
+            return result;
         }
     }
 }

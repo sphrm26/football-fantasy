@@ -181,5 +181,13 @@ namespace footballFantasy.DataAccessLayer
                 return record;
             }
         }
+        public static void saveChanges(User user)
+        {
+            var db = new Database();
+
+            var record = db.users.FirstOrDefault(record => record.userName == user.userName);
+            record = user;
+            db.SaveChanges();
+        }
     }
 }

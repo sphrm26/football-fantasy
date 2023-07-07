@@ -5,7 +5,7 @@ namespace footballFantasy.BuisnessLayer;
 
 public class Team
 {
-    public Player outsideGK { get; set; } 
+    public Player outsideGK { get; set; }
     public Player outsideDEF { get; set; }
     public Player outsideMID { get; set; }
     public Player outsideFRW { get; set; }
@@ -13,19 +13,63 @@ public class Team
     public List<Player> insideDEF { get; set; }
     public List<Player> insideMID { get; set; }
     public List<Player> insideFRW { get; set; }
-    public void addplayer(Player player)
+
+    public void addplayer(Player newPlayer)
+    {
+
+    }
+
+    public void positionCheck(Player newPlayer)
     {
         
-    }
-    public void positionLimit()
-    {
         
-    }
-    public void positionCheck()
-    {
-        
-    }
-    public void budgetCheck()
+        void addGK(Player newPlayer)
+        {
+            if (insideGK == null)
+            {
+                insideGK = newPlayer;
+            }
+            else
+            {
+                outsideGK = newPlayer;
+            }
+        }
+        void addDEF(Player newPlayer)
+        {
+            if (insideDEF.Count < 4)
+            {
+                insideDEF.Add(newPlayer);
+            }
+            else
+            {
+                outsideDEF = newPlayer;
+            }
+        }
+        void addMID(Player newPlayer)
+        {
+            if (insideMID.Count < 4)
+            {
+                insideMID.Add(newPlayer);
+            }
+            else
+            {
+                outsideMID = newPlayer;
+            }
+        }
+        void addFRW(Player newPlayer)
+        {
+            if (insideFRW.Count < 2)
+            {
+                insideFRW.Add(newPlayer);
+            }
+            else
+            {
+                outsideFRW = newPlayer;
+            }
+        }
+}
+
+public void budgetCheck(Player newPlayer)
     {
 
     }
@@ -79,5 +123,10 @@ public class Team
         {
             throw new Exception("you cant add more than 3 player from same team");
         }
+    }
+
+    public void playerExistanceCheck(Player newPlayer)
+    {
+        
     }
 }

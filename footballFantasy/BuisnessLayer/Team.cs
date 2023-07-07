@@ -10,8 +10,9 @@ public class Team
     public Player outsideFRW { get; set; }
     public Player insideGK { get; set; }
     public List<Player> insideDEF { get; set; }
-    public  List<Player> insideMID { get; set; }
-    public  List<Player> insideFRW { get; set; }
+    public List<Player> insideMID { get; set; }
+    public List<Player> insideFRW { get; set; }
+
     public List<Player> getAllPlater()
     {
         List<Player> list = new List<Player>();
@@ -20,18 +21,21 @@ public class Team
         list.Add(outsideMID);
         list.Add(outsideFRW);
         list.Add(insideGK);
-        foreach(var DEF in insideDEF)
+        foreach (var DEF in insideDEF)
         {
             list.Add(DEF);
         }
+
         foreach (var MID in insideMID)
         {
             list.Add(MID);
         }
+
         foreach (var FRW in insideFRW)
         {
             list.Add(FRW);
         }
+
         return list;
     }
 
@@ -60,130 +64,57 @@ public class Team
         {
             addMID(newPlayer);
         }
-
-        if (newPlayer.element_type == 4)
-        {
-            addFRW(newPlayer);
-        }
     }
 
-    public void budgetCheck(Player newPlayer)
+    public void deletePlayer(Player player)
     {
-    }
-
-    public void teammatesNumCheck(Player newPlayer)
-    {
-        int sameTeamNum = 0;
-        if (outsideGK.team == newPlayer.team)
+        if (insideGK.code == player.code)
         {
-            sameTeamNum++;
+            insideGK = null;
         }
 
-        if (outsideDEF.team == newPlayer.team)
+        if (outsideGK.code == player.code)
         {
-            sameTeamNum++;
+            outsideGK = null;
         }
 
-        if (outsideMID.team == newPlayer.team)
+        if (outsideDEF.code == player.code)
         {
-            sameTeamNum++;
+            outsideDEF = null;
         }
 
-        if (outsideFRW.team == newPlayer.team)
+        if (outsideMID.code == player.code)
         {
-            sameTeamNum++;
+            outsideMID = null;
         }
 
-        if (insideGK.team == newPlayer.team)
+        if (outsideFRW.code == player.code)
         {
-            sameTeamNum++;
+            outsideFRW = null;
         }
 
-        foreach (var player in insideDEF)
+        foreach (var item in insideDEF)
         {
-            if (player.team == newPlayer.team)
+            if (item.code == player.code)
             {
-                sameTeamNum++;
+                insideDEF.Remove(item);
             }
         }
 
-        foreach (var player in insideMID)
+        foreach (var item in insideMID)
         {
-            if (player.team == newPlayer.team)
+            if (item.code == player.code)
             {
-                sameTeamNum++;
+                insideMID.Remove(item);
             }
         }
 
-        foreach (var player in insideFRW)
+        foreach (var item in insideFRW)
         {
-            if (player.team == newPlayer.team)
+            if (item.code == player.code)
             {
-                sameTeamNum++;
+                insideFRW.Remove(item);
             }
         }
-
-        if (sameTeamNum > 3)
-        {
-            throw new Exception("you cant add more than 3 player from same team");
-        }
-    }
-
-    public void playerExistanceCheck(Player newPlayer)
-    {
-        
-    }
-
-    void addGK(Player newPlayer)
-    {
-        if (insideGK == null)
-        {
-            insideGK = newPlayer;
-        }
-        else if(outsideGK == null)
-        {
-            outsideGK = newPlayer;
-        }
-
-        throw new Exception("you cant add goalkeeper to your team");
-    }
-
-    void addDEF(Player newPlayer)
-    {
-        if (insideDEF.Count < 4)
-        {
-            insideDEF.Add(newPlayer);
-        }
-        else if(outsideDEF == null)
-        {
-            outsideDEF = newPlayer;
-        }
-        throw new Exception("your cant add defender to your team");
-    }
-
-    void addMID(Player newPlayer)
-    {
-        if (insideMID.Count < 4)
-        {
-            insideMID.Add(newPlayer);
-        }
-        else if(outsideMID == null)
-        {
-            outsideMID = newPlayer;
-        }
-        throw new Exception("your cant add midfielder to your team");
-    }
-
-    void addFRW(Player newPlayer)
-    {
-        if (insideFRW.Count < 2)
-        {
-            insideFRW.Add(newPlayer);
-        }
-        else if(outsideFRW == null)
-        {
-            outsideFRW = newPlayer;
-        }
-        throw new Exception("your cant add forward to your team");
     }
 }

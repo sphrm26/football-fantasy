@@ -140,10 +140,12 @@ public class Team
         {
             insideGK = newPlayer;
         }
-        else
+        else if(outsideGK == null)
         {
             outsideGK = newPlayer;
         }
+
+        throw new Exception("you cant add goalkeeper to your team");
     }
 
     void addDEF(Player newPlayer)
@@ -152,10 +154,11 @@ public class Team
         {
             insideDEF.Add(newPlayer);
         }
-        else
+        else if(outsideDEF == null)
         {
             outsideDEF = newPlayer;
         }
+        throw new Exception("your cant add defender to your team");
     }
 
     void addMID(Player newPlayer)
@@ -164,10 +167,11 @@ public class Team
         {
             insideMID.Add(newPlayer);
         }
-        else
+        else if(outsideMID == null)
         {
             outsideMID = newPlayer;
         }
+        throw new Exception("your cant add midfielder to your team");
     }
 
     void addFRW(Player newPlayer)
@@ -176,9 +180,10 @@ public class Team
         {
             insideFRW.Add(newPlayer);
         }
-        else
+        else if(outsideFRW == null)
         {
             outsideFRW = newPlayer;
         }
+        throw new Exception("your cant add forward to your team");
     }
 }

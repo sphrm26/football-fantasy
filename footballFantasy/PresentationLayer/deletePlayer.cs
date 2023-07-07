@@ -11,7 +11,7 @@ public class deletePlayer
         try
         {
             user.team.deletePlayer(code);
-            
+            UserHandel.addMoneyToWallet(code , user);
         }
         catch (Exception ex)
         {

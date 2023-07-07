@@ -25,6 +25,7 @@ namespace footballFantasy
             app.MapPost("/deletUser/", PresentationLayer.deletUsers.cleaning);
             app.MapGet("/getAllPlayer/", PresentationLayer.getAllPlayer.gettingPlayer);
             app.MapGet("/substitutPlayer", PresentationLayer.substitutPlayer.substitut);
+            app.MapPost("/deletePlayer/", PresentationLayer.deletePlayer.delete_Player);
             app.Run("http://localhost:3001");
         }
     }

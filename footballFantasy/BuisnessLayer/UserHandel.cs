@@ -5,7 +5,12 @@ namespace footballFantasy.BuisnessLayer
 {
     public class UserHandel
     {
-
+        public static void addMoneyToWallet(int code, User user)
+        {
+            Player player = PlayerHandle.findPlayerByCode(code);
+            user.budget += player.now_cost;
+            handelUserDatabase.saveChanges(user);
+        }
         public static void findUserByEmailAndUserName(string email, string userName)
         {
             if (handelUserDatabase.findUserByEmailAndUserName(email, userName) == null)

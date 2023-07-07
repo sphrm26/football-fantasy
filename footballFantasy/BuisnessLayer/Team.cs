@@ -1,5 +1,5 @@
 ﻿using footballFantasy.Model;
-
+using footballFantasy.DataAccessLayer;
 namespace footballFantasy.BuisnessLayer;
 
 public class Team
@@ -12,7 +12,7 @@ public class Team
     public List<Player> insideDEF { get; set; }
     public List<Player> insideMID { get; set; }
     public List<Player> insideFRW { get; set; }
-
+    
     public List<Player> getAllPlater()
     {
         List<Player> list = new List<Player>();
@@ -185,8 +185,9 @@ public class Team
         throw new Exception("your cant add forward to your team");
     }
 
-    public void deletePlayer(Player player)
+    public void deletePlayer(int code)
     {
+        Player player = PlayerHandle.findPlayerByCode(code);
         if (insideGK.code == player.code)
         {
             insideGK = null;

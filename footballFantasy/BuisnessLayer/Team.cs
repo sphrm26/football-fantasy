@@ -21,7 +21,25 @@ public class Team
 
     public void positionCheck(Player newPlayer)
     {
-        
+        if (newPlayer.element_type == 1)
+        {
+            addGK(newPlayer);
+        }
+
+        if (newPlayer.element_type == 2)
+        {
+            addDEF(newPlayer);
+        }
+
+        if (newPlayer.element_type == 3)
+        {
+            addMID(newPlayer);
+        }
+
+        if (newPlayer.element_type == 4)
+        {
+            addFRW(newPlayer);
+        }
         
         void addGK(Player newPlayer)
         {

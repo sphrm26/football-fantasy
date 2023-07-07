@@ -129,7 +129,7 @@ public class Team
 
     public void playerExistanceCheck(Player newPlayer)
     {
-        
+
     }
 
     void addGK(Player newPlayer)
@@ -138,7 +138,7 @@ public class Team
         {
             insideGK = newPlayer;
         }
-        else if(outsideGK == null)
+        else if (outsideGK == null)
         {
             outsideGK = newPlayer;
         }
@@ -152,7 +152,7 @@ public class Team
         {
             insideDEF.Add(newPlayer);
         }
-        else if(outsideDEF == null)
+        else if (outsideDEF == null)
         {
             outsideDEF = newPlayer;
         }
@@ -165,7 +165,7 @@ public class Team
         {
             insideMID.Add(newPlayer);
         }
-        else if(outsideMID == null)
+        else if (outsideMID == null)
         {
             outsideMID = newPlayer;
         }
@@ -178,7 +178,7 @@ public class Team
         {
             insideFRW.Add(newPlayer);
         }
-        else if(outsideFRW == null)
+        else if (outsideFRW == null)
         {
             outsideFRW = newPlayer;
         }
@@ -235,5 +235,46 @@ public class Team
                 insideFRW.Remove(item);
             }
         }
+    }
+    public void swapPlayer(int code1, int code2)
+    {
+        Player temp;
+        if (insideGK.code == code1 && outsideGK.code == code2)
+        {
+            temp = insideGK;
+            insideGK = outsideGK;
+            outsideDEF = temp;
+        }
+        foreach (var p1 in insideDEF)
+        {
+            if (p1.code == code1 && outsideDEF.code == code2)
+            {
+                temp = p1;
+                insideDEF.Remove(p1);
+                insideDEF.Add(outsideDEF);
+                outsideDEF = temp;
+            }
+        }
+        foreach (var p1 in insideMID)
+        {
+            if (p1.code == code1 && outsideMID.code == code2)
+            {
+                temp = p1;
+                insideMID.Remove(p1);
+                insideMID.Add(outsideMID);
+                outsideMID = temp;
+            }
+        }
+        foreach (var p1 in insideFRW)
+        {
+            if (p1.code == code1 && outsideFRW.code == code2)
+            {
+                temp = p1;
+                insideFRW.Remove(p1);
+                insideFRW.Add(outsideFRW);
+                outsideFRW = temp;
+            }
+        }
+        throw new Exception("your player not exist or not same position");
     }
 }

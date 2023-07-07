@@ -1,7 +1,10 @@
-﻿namespace footballFantasy.Model;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace footballFantasy.Model;
 
 public class Player
 {
+    [Key]
     public int code { get; set; }
     public string first_name { get; set; }
     public int id { get; set; }

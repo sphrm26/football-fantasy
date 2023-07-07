@@ -35,5 +35,155 @@ public class Team
         return list;
     }
 
+    public void addplayer(Player newPlayer)
+    {
+        budgetCheck(newPlayer);
+        playerExistanceCheck(newPlayer);
+        teammatesNumCheck(newPlayer);
+        positionCheck(newPlayer);
 
+    }
+
+    public void positionCheck(Player newPlayer)
+    {
+        if (newPlayer.element_type == 1)
+        {
+            addGK(newPlayer);
+        }
+
+        if (newPlayer.element_type == 2)
+        {
+            addDEF(newPlayer);
+        }
+
+        if (newPlayer.element_type == 3)
+        {
+            addMID(newPlayer);
+        }
+
+        if (newPlayer.element_type == 4)
+        {
+            addFRW(newPlayer);
+        }
+    }
+
+    public void budgetCheck(Player newPlayer)
+    {
+    }
+
+    public void teammatesNumCheck(Player newPlayer)
+    {
+        int sameTeamNum = 0;
+        if (outsideGK.team == newPlayer.team)
+        {
+            sameTeamNum++;
+        }
+
+        if (outsideDEF.team == newPlayer.team)
+        {
+            sameTeamNum++;
+        }
+
+        if (outsideMID.team == newPlayer.team)
+        {
+            sameTeamNum++;
+        }
+
+        if (outsideFRW.team == newPlayer.team)
+        {
+            sameTeamNum++;
+        }
+
+        if (insideGK.team == newPlayer.team)
+        {
+            sameTeamNum++;
+        }
+
+        foreach (var player in insideDEF)
+        {
+            if (player.team == newPlayer.team)
+            {
+                sameTeamNum++;
+            }
+        }
+
+        foreach (var player in insideMID)
+        {
+            if (player.team == newPlayer.team)
+            {
+                sameTeamNum++;
+            }
+        }
+
+        foreach (var player in insideFRW)
+        {
+            if (player.team == newPlayer.team)
+            {
+                sameTeamNum++;
+            }
+        }
+
+        if (sameTeamNum > 3)
+        {
+            throw new Exception("you cant add more than 3 player from same team");
+        }
+    }
+
+    public void playerExistanceCheck(Player newPlayer)
+    {
+        
+    }
+
+    void addGK(Player newPlayer)
+    {
+        if (insideGK == null)
+        {
+            insideGK = newPlayer;
+        }
+        else if(outsideGK == null)
+        {
+            outsideGK = newPlayer;
+        }
+
+        throw new Exception("you cant add goalkeeper to your team");
+    }
+
+    void addDEF(Player newPlayer)
+    {
+        if (insideDEF.Count < 4)
+        {
+            insideDEF.Add(newPlayer);
+        }
+        else if(outsideDEF == null)
+        {
+            outsideDEF = newPlayer;
+        }
+        throw new Exception("your cant add defender to your team");
+    }
+
+    void addMID(Player newPlayer)
+    {
+        if (insideMID.Count < 4)
+        {
+            insideMID.Add(newPlayer);
+        }
+        else if(outsideMID == null)
+        {
+            outsideMID = newPlayer;
+        }
+        throw new Exception("your cant add midfielder to your team");
+    }
+
+    void addFRW(Player newPlayer)
+    {
+        if (insideFRW.Count < 2)
+        {
+            insideFRW.Add(newPlayer);
+        }
+        else if(outsideFRW == null)
+        {
+            outsideFRW = newPlayer;
+        }
+        throw new Exception("your cant add forward to your team");
+    }
 }

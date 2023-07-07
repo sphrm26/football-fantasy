@@ -14,6 +14,7 @@ namespace footballFantasy.Model
         public string email { get; set; }
         public string password { get; set; }
         public Team team { get; set; }
+        public int budget { get; set; }
 
         public User(string password, string name, string email, string userName)
         {
@@ -22,6 +23,7 @@ namespace footballFantasy.Model
             this.email = email;
             this.userName = userName;
             this.password = password;
+            this.budget = 1000;
         }
     }
 

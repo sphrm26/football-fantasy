@@ -244,7 +244,7 @@ public class Team
         {
             temp = insideGK;
             insideGK = outsideGK;
-            outsideDEF = temp;
+            outsideGK = temp;
         }
         foreach (var p1 in insideDEF)
         {

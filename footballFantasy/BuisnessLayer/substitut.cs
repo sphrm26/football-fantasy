@@ -6,7 +6,7 @@ namespace footballFantasy.BuisnessLayer
     {
         public static void sub(User user,int code1,int code2)
         {
-            //swapp
+            user.team.swapPlayer(code1, code2);
             DataAccessLayer.handelUserDatabase.saveChanges(user);
         }
     }

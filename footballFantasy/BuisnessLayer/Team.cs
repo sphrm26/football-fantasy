@@ -1,9 +1,13 @@
-﻿using footballFantasy.Model;
-using footballFantasy.DataAccessLayer;
+﻿using footballFantasy.DataAccessLayer;
+using footballFantasy.Model;
+using System.ComponentModel.DataAnnotations;
+
 namespace footballFantasy.BuisnessLayer;
 
 public class Team
 {
+    [Key]
+    public int teamCode { get; set; };
     public Player outsideGK { get; set; }
     public Player outsideDEF { get; set; }
     public Player outsideMID { get; set; }
@@ -12,7 +16,7 @@ public class Team
     public List<Player> insideDEF { get; set; }
     public List<Player> insideMID { get; set; }
     public List<Player> insideFRW { get; set; }
-    
+
     public List<Player> getAllPlater()
     {
         List<Player> list = new List<Player>();

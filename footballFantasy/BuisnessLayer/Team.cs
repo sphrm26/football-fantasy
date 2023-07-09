@@ -7,16 +7,22 @@ namespace footballFantasy.BuisnessLayer;
 public class Team
 {
     [Key]
-    public int teamCode { get; set; };
-    public Player outsideGK { get; set; }
-    public Player outsideDEF { get; set; }
-    public Player outsideMID { get; set; }
-    public Player outsideFRW { get; set; }
-    public Player insideGK { get; set; }
-    public List<Player> insideDEF { get; set; }
-    public List<Player> insideMID { get; set; }
-    public List<Player> insideFRW { get; set; }
+    public string teamID { get; set; }
+    public Player? outsideGK { get; set; }
+    public Player? outsideDEF { get; set; }
+    public Player? outsideMID { get; set; }
+    public Player? outsideFRW { get; set; }
+    public Player? insideGK { get; set; }
+    public List<Player>? insideDEF { get; set; }
+    public List<Player>? insideMID { get; set; }
+    public List<Player>? insideFRW { get; set; }
 
+    public Team() { }
+
+    public Team(string id)
+    {
+        teamID = id;
+    }
     public List<Player> getAllPlater()
     {
         List<Player> list = new List<Player>();

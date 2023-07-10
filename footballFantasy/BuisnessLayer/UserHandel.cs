@@ -147,5 +147,14 @@ namespace footballFantasy.BuisnessLayer
             }
             return result;
         }
+
+        public static void calculateAllUsersPoint()
+        {
+            var allUsers = DataAccessLayer.handelUserDatabase.getUserList();
+            foreach (var user in allUsers)
+            {
+                pointCalculate(user);
+            }
+        }
     }
 }

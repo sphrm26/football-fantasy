@@ -4,7 +4,6 @@ namespace footballFantasy
     {
         public static void Main(String[] args)
         {
-
             var builder = WebApplication.CreateBuilder(args);
             var app = builder.Build();
             app.MapPost("/signup/", PresentationLayer.signUp.signup);

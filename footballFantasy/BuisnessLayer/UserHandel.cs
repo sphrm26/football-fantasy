@@ -8,11 +8,25 @@ namespace footballFantasy.BuisnessLayer
         public static void pointCalculate(User user)
         {
             user.weeklyPoint = 0;
-            foreach (var player in user.team.getAllPlayer())
+            foreach (var player in user.team.insideDEF)
             {
-                user.weeklyPoint += player.event_points;
+                user.weeklyPoint += 2*(player.event_points);
             }
+            foreach (var player in user.team.insideMID)
+            {
+                user.weeklyPoint += 2*(player.event_points);
+            }
+            foreach (var player in user.team.insideFRW)
+            {
+                user.weeklyPoint += 2*(player.event_points);
+            }
+            user.weeklyPoint += 2 * (user.team.insideGK.event_points);
+            user.weeklyPoint += (user.team.outsideGK.event_points);
+            user.weeklyPoint += (user.team.outsideDEF.event_points);
+            user.weeklyPoint += (user.team.outsideMID.event_points);
+            user.weeklyPoint += (user.team.outsideFRW.event_points);
             user.totalPoint += user.weeklyPoint;
+            handelUserDatabase.saveChanges(user);
         }
         public static void addMoneyToWallet(int code, User user)
         {

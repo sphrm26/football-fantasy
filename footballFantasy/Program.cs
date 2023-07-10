@@ -9,6 +9,7 @@ namespace footballFantasy
             app.MapPost("/signup/", PresentationLayer.signUp.signup);
             app.MapPut("/userPoint/", PresentationLayer.userPoint.calculatePoint);
             app.MapGet("/tablePoint/", PresentationLayer.userPoint.tablePoint);
+            app.MapGet("/getMoney/", PresentationLayer.getMoney.gettingMoney);
             app.MapPost("/OTPCheck/", PresentationLayer.OTPChecking.OTPCheck);
             app.MapGet("/login/", PresentationLayer.logIn.login);
             app.MapPost("/forgetPassword/", PresentationLayer.forgetPassWord.remakePassword);

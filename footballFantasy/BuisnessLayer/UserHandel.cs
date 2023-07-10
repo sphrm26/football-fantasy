@@ -42,7 +42,7 @@ namespace footballFantasy.BuisnessLayer
         {
             Player player = PlayerHandle.findPlayerByCode(code);
             user.budget -= player.now_cost;
-            handelUserDatabase.saveChanges(user);
+            handelUserDatabase.saveChanges(user); 
         }
 
         public static void findUserByEmailAndUserName(string email, string userName)

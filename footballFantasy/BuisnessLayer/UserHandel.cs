@@ -5,6 +5,39 @@ namespace footballFantasy.BuisnessLayer
 {
     public class UserHandel
     {
+        public static void pointCalculate(User user)
+        {
+            user.weeklyPoint = 0;
+            foreach (var player in user.team.insideDEF)
+            {
+                user.weeklyPoint += 2 * (player.event_points);
+            }
+
+            foreach (var player in user.team.insideMID)
+            {
+                user.weeklyPoint += 2 * (player.event_points);
+            }
+
+            foreach (var player in user.team.insideFRW)
+            {
+                user.weeklyPoint += 2 * (player.event_points);
+            }
+
+            user.weeklyPoint += 2 * (user.team.insideGK.event_points);
+            user.weeklyPoint += (user.team.outsideGK.event_points);
+            user.weeklyPoint += (user.team.outsideDEF.event_points);
+            user.weeklyPoint += (user.team.outsideMID.event_points);
+            user.weeklyPoint += (user.team.outsideFRW.event_points);
+            user.totalPoint += user.weeklyPoint;
+            handelUserDatabase.saveChanges(user);
+        }
+
+        public static void addMoneyToWallet(int code, User user)
+        {
+            Player player = PlayerHandle.findPlayerByCode(code);
+            user.budget += player.now_cost;
+            handelUserDatabase.saveChanges(user);
+        }
 
         public static void findUserByEmailAndUserName(string email, string userName)
         {
@@ -13,28 +46,33 @@ namespace footballFantasy.BuisnessLayer
                 throw new Exception("your email or user name is incorrect!");
             }
         }
+
         public static void sameUserCheck(string email, string username)
         {
             if (DataAccessLayer.handelUserDatabase.isSameEmailUserFind(email))
             {
                 throw new Exception("your email is already exist");
             }
+
             if (DataAccessLayer.handelUserDatabase.isSameUserNameUserFind(username))
             {
                 throw new Exception("your user name is already exist");
             }
         }
+
         public static void sameWaitUserCheck(string email, string username)
         {
             if (DataAccessLayer.handelUserDatabase.isSameEmailWaitUserFind(email))
             {
                 throw new Exception("your email is already exist");
             }
+
             if (DataAccessLayer.handelUserDatabase.isSameUserNameWaitUserFind(username))
             {
                 throw new Exception("your user name is already exist");
             }
         }
+
         public static string login(string userInformation, string password)
         {
             User user;
@@ -46,6 +84,7 @@ namespace footballFantasy.BuisnessLayer
                 {
                     throw new Exception("your email not found!");
                 }
+
                 if (user.password != password)
                 {
                     throw new Exception("your password is not correct!");
@@ -59,19 +98,23 @@ namespace footballFantasy.BuisnessLayer
                 {
                     throw new Exception("your user name not found!");
                 }
+
                 if (user.password != password)
                 {
                     throw new Exception("your password is not correct!");
                 }
             }
+
             string token = tokenHandel.Get_Token(user.userName);
             return token;
         }
+
         public static void makeNewWaitUser(string password, string name, string email, string username, string code)
         {
             waitingUsers newWaitUser = new waitingUsers(password, DateTime.Now, name, email, username, code);
             handelUserDatabase.addToWaitList(newWaitUser);
         }
+
         public static void addUser(waitingUsers waitUser, string email)
         {
             //add to user class
@@ -80,6 +123,7 @@ namespace footballFantasy.BuisnessLayer
             //remove from wait list
             handelUserDatabase.removeFromWaitList(email);
         }
+
         public static void changeUserPassword(string password, string email)
         {
             //changing user password
@@ -87,37 +131,65 @@ namespace footballFantasy.BuisnessLayer
             //remove from wait list
             handelUserDatabase.removeFromWaitList(email);
         }
+
         public static waitingUsers OTPCheck(string otp, string email)
         {
-
             var waitUser = handelUserDatabase.findWaitUser(otp, email);
             if (waitUser == null)
             {
                 handelExpireOTPDatabase.checkAllOTPForExpire();
                 throw new Exception("your OTP is incorrect");
             }
+
             if (expireOTP.checkExpire(waitUser))
             {
                 handelExpireOTPDatabase.checkAllOTPForExpire();
                 throw new Exception("your OTP is expired");
             }
+
             return waitUser;
         }
 
         public static User? GetUserByToken(string token)
         {
-            string userName =  tokenHandel.decoding_Token(token);
-          return handelUserDatabase.findUserByUserName(userName);
+            string userName = tokenHandel.decoding_Token(token);
+            return handelUserDatabase.findUserByUserName(userName);
         }
 
         public static List<object> getAllPlayers(User user)
         {
             List<object> result = new List<object>();
-            foreach(var player in user.team.getAllPlater())
+            foreach (var player in user.team.getAllPlayer())
             {
                 result.Add(player);
             }
+
             return result;
+        }
+
+        public static void calculateAllUsersPoint()
+        {
+            var allUsers = DataAccessLayer.handelUserDatabase.getUserList();
+            foreach (var user in allUsers)
+            {
+                pointCalculate(user);
+            }
+        }
+
+        public static List<User> pointTable()
+        {
+            var users = DataAccessLayer.handelUserDatabase.getUserList();
+            for (int i = 0; i < users.Count - 1; i++)
+            {
+                for (int j = i + 1; j < users.Count; j++)
+                {
+                    if (users[i].weeklyPoint < users[j].weeklyPoint)
+                    {
+                        (users[i], users[j]) = (users[j], users[i]);
+                    }
+                }
+            }
+            return users;
         }
     }
 }

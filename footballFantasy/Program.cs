@@ -4,10 +4,12 @@ namespace footballFantasy
     {
         public static void Main(String[] args)
         {
-
             var builder = WebApplication.CreateBuilder(args);
             var app = builder.Build();
             app.MapPost("/signup/", PresentationLayer.signUp.signup);
+            app.MapPut("/userPoint/", PresentationLayer.userPoint.calculatePoint);
+            app.MapGet("/tablePoint/", PresentationLayer.userPoint.tablePoint);
+            app.MapGet("/getMoney/", PresentationLayer.getMoney.gettingMoney);
             app.MapPost("/OTPCheck/", PresentationLayer.OTPChecking.OTPCheck);
             app.MapGet("/login/", PresentationLayer.logIn.login);
             app.MapPost("/forgetPassword/", PresentationLayer.forgetPassWord.remakePassword);
@@ -24,7 +26,8 @@ namespace footballFantasy
             //for deleting user
             app.MapPost("/deletUser/", PresentationLayer.deletUsers.cleaning);
             app.MapGet("/getAllPlayer/", PresentationLayer.getAllPlayer.gettingPlayer);
-            app.MapGet("/substitutPlayer", PresentationLayer.substitutPlayer.substitut);
+            app.MapGet("/substitutPlayer/", PresentationLayer.substitutPlayer.substitut);
+            app.MapPost("/deletePlayer/", PresentationLayer.deletePlayer.delete_Player);
             app.Run("http://localhost:3001");
         }
     }

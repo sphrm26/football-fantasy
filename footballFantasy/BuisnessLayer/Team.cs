@@ -1,19 +1,29 @@
-﻿using footballFantasy.Model;
+﻿using footballFantasy.DataAccessLayer;
+using footballFantasy.Model;
+using System.ComponentModel.DataAnnotations;
 
 namespace footballFantasy.BuisnessLayer;
 
 public class Team
 {
-    public Player outsideGK { get; set; }
-    public Player outsideDEF { get; set; }
-    public Player outsideMID { get; set; }
-    public Player outsideFRW { get; set; }
-    public Player insideGK { get; set; }
-    public List<Player> insideDEF { get; set; }
-    public List<Player> insideMID { get; set; }
-    public List<Player> insideFRW { get; set; }
+    [Key]
+    public string teamID { get; set; }
+    public Player? outsideGK { get; set; }
+    public Player? outsideDEF { get; set; }
+    public Player? outsideMID { get; set; }
+    public Player? outsideFRW { get; set; }
+    public Player? insideGK { get; set; }
+    public List<Player>? insideDEF { get; set; }
+    public List<Player>? insideMID { get; set; }
+    public List<Player>? insideFRW { get; set; }
 
-    public List<Player> getAllPlater()
+    public Team() { }
+
+    public Team(string id)
+    {
+        teamID = id;
+    }
+    public List<Player> getAllPlayer()
     {
         List<Player> list = new List<Player>();
         list.Add(outsideGK);
@@ -185,8 +195,9 @@ public class Team
         throw new Exception("your cant add forward to your team");
     }
 
-    public void deletePlayer(Player player)
+    public void deletePlayer(int code)
     {
+        Player player = PlayerHandle.findPlayerByCode(code);
         if (insideGK.code == player.code)
         {
             insideGK = null;
@@ -243,7 +254,7 @@ public class Team
         {
             temp = insideGK;
             insideGK = outsideGK;
-            outsideDEF = temp;
+            outsideGK = temp;
         }
         foreach (var p1 in insideDEF)
         {

@@ -15,16 +15,20 @@ namespace footballFantasy.Model
         public string password { get; set; }
         public Team team { get; set; }
         public int budget { get; set; }
+        public int weeklyPoint { get; set; }
+        public int totalPoint { get; set; }
 
         public User(string password, string name, string email, string userName)
         {
-            this.team = new Team();
+            this.team = new Team(userName);
             this.name = name;
             this.email = email;
             this.userName = userName;
             this.password = password;
             this.budget = 1000;
+            this.weeklyPoint = 0;
+            this.totalPoint = 0;
         }
+        
     }
-
 }

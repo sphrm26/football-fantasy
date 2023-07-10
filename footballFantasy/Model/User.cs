@@ -18,7 +18,7 @@ namespace footballFantasy.Model
 
         public User(string password, string name, string email, string userName)
         {
-            this.team = new Team();
+            this.team = new Team(userName);
             this.name = name;
             this.email = email;
             this.userName = userName;

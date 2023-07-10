@@ -8,7 +8,7 @@ namespace footballFantasy
             var app = builder.Build();
             app.MapPost("/signup/", PresentationLayer.signUp.signup);
             app.MapPut("/userPoint/", PresentationLayer.userPoint.calculatePoint);
-            app.MapGet("/tablePoint/", )
+            app.MapGet("/tablePoint/", PresentationLayer.userPoint.tablePoint);
             app.MapPost("/OTPCheck/", PresentationLayer.OTPChecking.OTPCheck);
             app.MapGet("/login/", PresentationLayer.logIn.login);
             app.MapPost("/forgetPassword/", PresentationLayer.forgetPassWord.remakePassword);

@@ -5,6 +5,29 @@ namespace footballFantasy.BuisnessLayer
 {
     public class UserHandel
     {
+        public static void pointCalculate(User user)
+        {
+            user.weeklyPoint = 0;
+            foreach (var player in user.team.insideDEF)
+            {
+                user.weeklyPoint += 2*(player.event_points);
+            }
+            foreach (var player in user.team.insideMID)
+            {
+                user.weeklyPoint += 2*(player.event_points);
+            }
+            foreach (var player in user.team.insideFRW)
+            {
+                user.weeklyPoint += 2*(player.event_points);
+            }
+            user.weeklyPoint += 2 * (user.team.insideGK.event_points);
+            user.weeklyPoint += (user.team.outsideGK.event_points);
+            user.weeklyPoint += (user.team.outsideDEF.event_points);
+            user.weeklyPoint += (user.team.outsideMID.event_points);
+            user.weeklyPoint += (user.team.outsideFRW.event_points);
+            user.totalPoint += user.weeklyPoint;
+            handelUserDatabase.saveChanges(user);
+        }
         public static void addMoneyToWallet(int code, User user)
         {
             Player player = PlayerHandle.findPlayerByCode(code);
@@ -118,11 +141,20 @@ namespace footballFantasy.BuisnessLayer
         public static List<object> getAllPlayers(User user)
         {
             List<object> result = new List<object>();
-            foreach(var player in user.team.getAllPlater())
+            foreach(var player in user.team.getAllPlayer())
             {
                 result.Add(player);
             }
             return result;
+        }
+
+        public static void calculateAllUsersPoint()
+        {
+            var allUsers = DataAccessLayer.handelUserDatabase.getUserList();
+            foreach (var user in allUsers)
+            {
+                pointCalculate(user);
+            }
         }
     }
 }

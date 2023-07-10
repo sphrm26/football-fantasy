@@ -32,5 +32,6 @@ namespace footballFantasy.BuisnessLayer
         {
             handelUserDatabase.deletAllUsers();
         }
+        
     }
 }

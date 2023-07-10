@@ -23,7 +23,7 @@ public class Team
     {
         teamID = id;
     }
-    public List<Player> getAllPlater()
+    public List<Player> getAllPlayer()
     {
         List<Player> list = new List<Player>();
         list.Add(outsideGK);

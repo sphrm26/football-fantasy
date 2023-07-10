@@ -5,7 +5,15 @@ namespace footballFantasy.BuisnessLayer
 {
     public class UserHandel
     {
-        
+        public static void pointCalculate(User user)
+        {
+            user.weeklyPoint = 0;
+            foreach (var player in user.team.getAllPlayer())
+            {
+                user.weeklyPoint += player.event_points;
+            }
+            user.totalPoint += user.weeklyPoint;
+        }
         public static void addMoneyToWallet(int code, User user)
         {
             Player player = PlayerHandle.findPlayerByCode(code);
@@ -119,7 +127,7 @@ namespace footballFantasy.BuisnessLayer
         public static List<object> getAllPlayers(User user)
         {
             List<object> result = new List<object>();
-            foreach(var player in user.team.getAllPlater())
+            foreach(var player in user.team.getAllPlayer())
             {
                 result.Add(player);
             }

@@ -22,7 +22,7 @@ namespace footballFantasy
 
             //for deleting wait user
             app.MapPost("/deletWaitUser/", PresentationLayer.deletWaitList.cleaning);
-
+            app.MapPost("/addplyerToteam/", PresentationLayer.addPlayer.add_Player);
             //for deleting user
             app.MapPost("/deletUser/", PresentationLayer.deletUsers.cleaning);
             app.MapGet("/getAllPlayer/", PresentationLayer.getAllPlayer.gettingPlayer);

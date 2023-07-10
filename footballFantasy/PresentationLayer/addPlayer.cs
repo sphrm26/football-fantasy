@@ -1,4 +1,5 @@
-﻿using footballFantasy.Model;
+﻿using footballFantasy.BuisnessLayer;
+using footballFantasy.Model;
 
 namespace footballFantasy.PresentationLayer
 {
@@ -6,11 +7,11 @@ namespace footballFantasy.PresentationLayer
     {
          public static string add_Player(string tk,int code)
         {
-
-            User 
+            User user = UserHandel.GetUserByToken(tk);
             try
             {
-
+                user.team.addplayer(code,user.budget);
+                UserHandel.deleteMoneyToWallet(code, user);
             }
             catch(Exception ex)
             {

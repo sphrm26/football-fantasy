@@ -49,9 +49,10 @@ public class Team
         return list;
     }
 
-    public void addplayer(Player newPlayer)
+    public void addplayer(int code,int budge)
     {
-        budgetCheck(newPlayer);
+        Player newPlayer = PlayerHandle.findPlayerByCode(code);
+        budgetCheck(budge,newPlayer);
         playerExistanceCheck(newPlayer);
         teammatesNumCheck(newPlayer);
         positionCheck(newPlayer);
@@ -75,10 +76,6 @@ public class Team
             addMID(newPlayer);
         }
     }
-    public void budgetCheck(Player newPlayer)
-    {
-    }
-
     public void teammatesNumCheck(Player newPlayer)
     {
         int sameTeamNum = 0;
@@ -139,7 +136,21 @@ public class Team
 
     public void playerExistanceCheck(Player newPlayer)
     {
+        foreach (var pleter in getAllPlayer())
+        {
+            if(pleter.code==newPlayer.code )
+            {
+                throw new Exception("this player already existed");
+            }
+        }
+    }
 
+    public void budgetCheck(int budge,Player newPlayer)
+    {
+        if (budge < newPlayer.now_cost)
+        {
+            throw new Exception ("you dont have enough mony");
+        }
     }
 
     void addGK(Player newPlayer)

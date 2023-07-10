@@ -38,6 +38,12 @@ namespace footballFantasy.BuisnessLayer
             user.budget += player.now_cost;
             handelUserDatabase.saveChanges(user);
         }
+        public static void deleteMoneyToWallet(int code, User user)
+        {
+            Player player = PlayerHandle.findPlayerByCode(code);
+            user.budget -= player.now_cost;
+            handelUserDatabase.saveChanges(user);
+        }
 
         public static void findUserByEmailAndUserName(string email, string userName)
         {

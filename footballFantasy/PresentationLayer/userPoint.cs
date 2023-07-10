@@ -8,4 +8,9 @@ public class userPoint
     {
         BuisnessLayer.UserHandel.calculateAllUsersPoint();
     }
+    public static List<object> tablePoint()
+    {
+        BuisnessLayer.UserHandel.ca
+        
+    } 
 }

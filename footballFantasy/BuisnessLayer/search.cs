@@ -4,7 +4,7 @@ namespace footballFantasy.BuisnessLayer
 {
     public class search
     {
-        public static bool filterCheking(int minPrice, int maxPrice, int Position, int minScore, int maxScore,int teamCode)
+        public static bool filterCheking(int minPrice, int maxPrice, int Position, int minScore, int maxScore, int teamCode)
         {
             //check in price range
             //check position
@@ -12,9 +12,32 @@ namespace footballFantasy.BuisnessLayer
             //check team
         }
 
-        public static int searchEngine(string name)
+        public static bool firstSame(string searched, string sourse)
         {
 
+        }
+        public static bool contain(string searched, string sourse)
+        {
+
+        }
+        public static bool wordsInOrder(string searched, string sourse)
+        {
+
+        }
+        public static bool haveWords(string searched, string sourse)
+        {
+
+        }
+
+        public static int searchEngine(string name, string first_name, string second_name)
+        {
+            //to lover()
+            //search by first name
+            //search by first name
+            //search by last name
+            //search by last name
+            //search by full name
+            //search by full name
         }
 
         public static List<Player> searchPlayers(string name, int minPrice, int maxPrice, int Position, int minScore, int maxScore, int teamCode)

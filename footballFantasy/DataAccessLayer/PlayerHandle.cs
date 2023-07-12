@@ -29,4 +29,17 @@ public class PlayerHandle
             return record;
         }
     }
+
+    public static List<Player> GetAllPlayers()
+    {
+        List<Player> list = new List<Player>();
+        using (var db = new Database())
+        {
+            foreach (var player in db.Players)
+            {
+                list.Add(player);
+            }
+        }
+        return list;
+    }
 }

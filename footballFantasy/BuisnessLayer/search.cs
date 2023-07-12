@@ -11,6 +11,12 @@ namespace footballFantasy.BuisnessLayer
             //check in range score
             //check team
         }
+
+        public static int searchEngine(string name)
+        {
+
+        }
+
         public static List<Player> searchPlayers(string name, int minPrice, int maxPrice, int Position, int minScore, int maxScore, int teamCode)
         {
             List<Player> list = new List<Player>();

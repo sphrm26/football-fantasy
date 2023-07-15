@@ -4,9 +4,22 @@ namespace footballFantasy.BuisnessLayer
 {
     public class search
     {
-        public static bool filterCheking(int minPrice, int maxPrice, int Position, int minScore, int maxScore, int teamCode)
+        public static bool inPriceRange(int minPrice, int maxPrice, int price)
+        {
+            if (price >= minPrice && price <= maxPrice)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool filterCheking(int minPrice, int maxPrice, int Position, int minScore, int maxScore, int teamCode, Player player)
         {
             //check in price range
+            if (!inPriceRange(minPrice, maxPrice, player.now_cost))
+            {
+                return false;
+            }
+
             //check position
             //check in range score
             //check team

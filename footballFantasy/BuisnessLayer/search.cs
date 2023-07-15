@@ -109,6 +109,11 @@ namespace footballFantasy.BuisnessLayer
             foreach (var player in players)
             {
                 // checking filters
+                if (!filterCheking(minPrice, maxPrice, Position, minScore, maxScore, teamCode, player))
+                {
+                    continue;
+                }
+
                 // call search engine
                 // add to list
             }

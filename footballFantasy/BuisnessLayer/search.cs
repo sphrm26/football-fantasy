@@ -1,4 +1,5 @@
 ﻿using footballFantasy.Model;
+using System.Text.RegularExpressions;
 
 namespace footballFantasy.BuisnessLayer
 {
@@ -76,7 +77,10 @@ namespace footballFantasy.BuisnessLayer
 
         public static bool firstSame(string searched, string sourse)
         {
+            string pattern = "^" + Regex.Escape(searched);
+            Regex regex = new Regex(pattern);
 
+            return regex.IsMatch(sourse);
         }
         public static bool contain(string searched, string sourse)
         {

@@ -13,4 +13,5 @@ public class Player
     public int team { get; set; }
     public int element_type { get; set; }
     public int event_points { get; set; }
+    public int total_points { get; set;}
 }

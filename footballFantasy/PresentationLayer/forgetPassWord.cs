@@ -42,6 +42,13 @@ namespace footballFantasy.PresentationLayer
             {
                 return e.Message;
             }
+            try
+            {
+                UserHandel.OTPCheck("otp", email);
+            }
+            catch
+            {
+            }
             //send email
             string code = OTP.OTPSet(email);
             //make new wait user

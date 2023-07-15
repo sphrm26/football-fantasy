@@ -32,6 +32,18 @@ namespace footballFantasy.BuisnessLayer
             }
             return false;
         }
+        public static bool teamCheck(int team, int playerTeam)
+        {
+            if (team == 21)
+            {
+                return true;
+            }
+            if (team == playerTeam)
+            {
+                return true;
+            }
+            return false;
+        }
         public static bool filterCheking(int minPrice, int maxPrice, int Position, int minScore, int maxScore, int teamCode, Player player)
         {
             //check in price range
@@ -53,6 +65,13 @@ namespace footballFantasy.BuisnessLayer
             }
 
             //check team
+            if (!teamCheck(teamCode, player.team))
+            {
+                return false;
+            }
+
+            //filter check pass
+            return true;
         }
 
         public static bool firstSame(string searched, string sourse)

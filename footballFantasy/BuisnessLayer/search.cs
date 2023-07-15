@@ -95,7 +95,14 @@ namespace footballFantasy.BuisnessLayer
         }
         public static bool haveWords(string searched, string sourse)
         {
-
+            foreach (var ch in  searched)
+            {
+                if (!sourse.Contains(ch))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
         public static bool dictationProblem(string searched, string sourse)
         {

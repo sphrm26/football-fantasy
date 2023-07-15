@@ -24,6 +24,14 @@ namespace footballFantasy.BuisnessLayer
             }
             return false;
         }
+        public static bool inPointRange(int minPoint, int maxPoint, int playerPoint)
+        {
+            if (playerPoint >= minPoint && playerPoint <= maxPoint)
+            {
+                return true;
+            }
+            return false;
+        }
         public static bool filterCheking(int minPrice, int maxPrice, int Position, int minScore, int maxScore, int teamCode, Player player)
         {
             //check in price range
@@ -39,6 +47,11 @@ namespace footballFantasy.BuisnessLayer
             }
 
             //check in range score
+            if (!inPointRange(minScore, maxScore, player.total_points))
+            {
+                return false;
+            }
+
             //check team
         }
 

@@ -12,6 +12,18 @@ namespace footballFantasy.BuisnessLayer
             }
             return false;
         }
+        public static bool positionCheck(int position, int playerPosition)
+        {
+            if (position == 5)
+            {
+                return true;
+            }
+            if (position == playerPosition)
+            {
+                return true;
+            }
+            return false;
+        }
         public static bool filterCheking(int minPrice, int maxPrice, int Position, int minScore, int maxScore, int teamCode, Player player)
         {
             //check in price range
@@ -21,6 +33,11 @@ namespace footballFantasy.BuisnessLayer
             }
 
             //check position
+            if (!positionCheck(Position, player.element_type))
+            {
+                return false;
+            }
+
             //check in range score
             //check team
         }

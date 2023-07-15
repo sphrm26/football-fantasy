@@ -90,10 +90,17 @@ namespace footballFantasy.BuisnessLayer
         {
 
         }
+        public static bool dictationProblem(string searched, string sourse)
+        {
+
+        }
 
         public static int searchEngine(string name, string first_name, string second_name)
         {
-            //to lover()
+            name = name.ToLower();
+            first_name = first_name.ToLower();
+            second_name = second_name.ToLower();
+
             //search by first name
             //search by first name
             //search by last name

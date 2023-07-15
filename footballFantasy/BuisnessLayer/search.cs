@@ -88,7 +88,10 @@ namespace footballFantasy.BuisnessLayer
         }
         public static bool wordsInOrder(string searched, string sourse)
         {
+            string pattern = "^.*?" + string.Join(".*?", searched.ToCharArray()) + ".*?$";
+            Regex regex = new Regex(pattern);
 
+            return regex.IsMatch(sourse);
         }
         public static bool haveWords(string searched, string sourse)
         {

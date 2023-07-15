@@ -84,7 +84,7 @@ namespace footballFantasy.BuisnessLayer
         }
         public static bool contain(string searched, string sourse)
         {
-            return secondWord.Contains(firstWord);
+            return sourse.Contains(searched);
         }
         public static bool wordsInOrder(string searched, string sourse)
         {

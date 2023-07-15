@@ -1,14 +1,18 @@
 ﻿using footballFantasy.BuisnessLayer;
-using footballFantasy.DataAccessLayer;
-using footballFantasy.Model;
 
 namespace footballFantasy.PresentationLayer
 {
     public class signUp
     {
-        public static string signup(User newUser)
+        public static string signup(string email, string username, string name, string password)
         {
-            string name = newUser.name, email = newUser.email, username = newUser.userName, password = newUser.password;
+            try
+            {
+                UserHandel.OTPCheck("otp", email);
+            }
+            catch
+            {
+            }
             try
             {
                 UserHandel.sameUserCheck(email, username);
@@ -29,7 +33,7 @@ namespace footballFantasy.PresentationLayer
 
             // otp
             string code = OTP.OTPSet(Convert.ToString(email));
-            UserHandel.makeNewWaitUser(password,name,email,username,code);
+            UserHandel.makeNewWaitUser(password, name, email, username, code);
 
             return "please enter your otp";
 

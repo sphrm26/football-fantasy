@@ -6,6 +6,14 @@ namespace footballFantasy
         {
             var builder = WebApplication.CreateBuilder(args);
             var app = builder.Build();
+
+            app.Use((context, next) =>
+            {
+                context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+                context.Response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+                return next();
+            });
+
             app.MapPost("/signup/", PresentationLayer.signUp.signup);
             app.MapPut("/userPoint/", PresentationLayer.userPoint.calculatePoint);
             app.MapGet("/tablePoint/", PresentationLayer.userPoint.tablePoint);

@@ -86,6 +86,28 @@ namespace footballFantasy.BuisnessLayer
         {
             return sourse.Contains(searched);
         }
+        public static bool dictationProblem(string searched, string sourse)
+        {
+            if (searched.Length > sourse.Length)
+            {
+                string temp = sourse;
+                sourse = searched;
+                searched = temp;
+            }
+            int counter = 0;
+            for (int i = 0; i < searched.Length; i++)
+            {
+                if (searched[i] != sourse[i])
+                {
+                    counter++;
+                }
+            }
+            if (counter <= 2)
+            {
+                return true;
+            }
+            return false;
+        }
         public static bool wordsInOrder(string searched, string sourse)
         {
             string pattern = "^.*?" + string.Join(".*?", searched.ToCharArray()) + ".*?$";
@@ -95,7 +117,7 @@ namespace footballFantasy.BuisnessLayer
         }
         public static bool haveWords(string searched, string sourse)
         {
-            foreach (var ch in  searched)
+            foreach (var ch in searched)
             {
                 if (!sourse.Contains(ch))
                 {
@@ -103,10 +125,6 @@ namespace footballFantasy.BuisnessLayer
                 }
             }
             return true;
-        }
-        public static bool dictationProblem(string searched, string sourse)
-        {
-
         }
 
         public static int searchEngine(string name, string first_name, string second_name)

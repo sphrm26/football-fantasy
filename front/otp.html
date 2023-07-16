@@ -1,0 +1,99 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="otp.css">
+    <title>otp</title>
+</head>
+
+<body
+    style="background-color: rgb(53, 4, 59);background-image: url('images/download_auto_x2.jpg');background-size: 100%; background-repeat: no-repeat;">
+    <div class="title">enter your verify code</div>
+    <form>
+        <label class="label" for="otp">verify code</label>
+        <input class="input" type="text" name="otp" id="otp"><br>
+
+    </form>
+    <button onclick="call(false)" class="button">checking</button>
+
+    <div id="loadingModal">
+        <div class="modal-content">
+            <div class="spinner"></div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let email = urlParams.get('email');
+        let password = urlParams.get('password');
+        // let password = email.split("password=")[1];
+        // email = email.split("password=")[0];
+
+        function call(postExecuted) {
+            if (postExecuted) {
+                return;
+            }
+
+            let otp = $("#otp").val();
+
+            //"Please wait..."
+            $('#loadingModal').show();
+
+
+            var url = "http://localhost:3001/OTPCheck/?" + "otp=" + otp + "&email=" + email;
+            postExecuted = true;
+            $.post(url, function (data) {
+
+
+                // if (data == "please enter your otp") {
+                //     setTimeout(function () {
+                //         $('#loadingModal').hide();
+                //         setTimeout(function () {
+                //             alert(data);
+                //             let loginLink = "otp.html?email=" + email + "&password=" + password;
+                //             window.location.href = loginLink;
+                //         }, 500);
+                //     }, 500);
+                // } else {
+                //     setTimeout(function () {
+                //         $('#loadingModal').hide();
+                //         setTimeout(function () {
+                //             alert(data);
+                //         }, 500);
+                //     }, 500);
+                // }
+
+
+
+                setTimeout(function () {
+                        $('#loadingModal').hide();
+                        setTimeout(function () {
+                            alert(data);
+                        }, 500);
+                    }, 500);
+                if (data == "your OTP is correct\nsuccessfuly sign up") {
+                    var loginUrl = "http://localhost:3001/login/" + "?" + "password=" + password + "&userInformation=" + email;
+                    fetch(loginUrl)
+                        .then(response => response.text())
+                        .then(data => {
+                            let token = data;
+                            let loginLink = "lineup.html?token=" + token;
+                            window.location.href = loginLink;
+                        })
+                        .catch(error => {
+                            alert("Service Error");
+                        });
+                }
+
+
+
+            });
+        };
+    </script>
+</body>
+
+</html>

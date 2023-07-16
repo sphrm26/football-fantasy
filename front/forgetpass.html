@@ -1,0 +1,62 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="forgetPassStyle.css">
+    <title>forget password</title>
+</head>
+
+<body
+    style="background-color: rgb(53, 4, 59);background-image: url('images/Premier-League-statement-graphic-NEW-pink_auto_x2.jpg');background-size: 100%; background-repeat: no-repeat;">
+    <div class="title">forget password</div>
+    <form>
+        <label class="label" for="email">email</label>
+        <input class="input" type="text" name="email" id="email"><br>
+
+        <label class="label" for="username">username</label>
+        <input class="input" type="text" name="username" id="username"><br>
+    </form>
+    <button onclick="call(false)" class="button">send verify code</button>
+
+    <div id="loadingModal">
+        <div class="modal-content">
+            <div class="spinner"></div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+        function call(postExecuted) {
+            if (postExecuted) {
+                return;
+            }
+
+            let userName = $("#username").val();
+            let email = $("#email").val();
+
+            // نمایش مدال "Please wait..."
+            $('#loadingModal').show();
+
+            setTimeout(function () {
+                $('#loadingModal').hide();
+
+                var url = "http://localhost:3001/forgetPassword/" + "?" + "username=" + userName + "&email=" + email;
+                postExecuted = true;
+                $.post(url, function (data) {
+                    $('#loadingModal').hide();
+                    alert(data);
+                    if (data == "please enter your otp") {
+                        let loginLink = "remakePass.html?email=" + email;
+                        window.location.href = loginLink;
+                    }
+                });
+            }, 2500);
+        };
+    </script>
+
+</body>
+
+</html>

@@ -67,7 +67,12 @@
                     }
                 })
                 .catch(error => {
-                    alert("Service Error");
+                    setTimeout(function () {
+                        $('#loadingModal').hide();
+                        setTimeout(function () {
+                            alert("Service Error");
+                        }, 500);
+                    }, 500);
                 });
         }
     </script>

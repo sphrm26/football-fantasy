@@ -40,20 +40,23 @@
             // "Please wait..."
             $('#loadingModal').show();
 
-            setTimeout(function () {
-                $('#loadingModal').hide();
+            $('#loadingModal').hide();
 
-                var url = "http://localhost:3001/forgetPassword/" + "?" + "username=" + userName + "&email=" + email;
-                postExecuted = true;
-                $.post(url, function (data) {
+            var url = "http://localhost:3001/forgetPassword/" + "?" + "username=" + userName + "&email=" + email;
+            postExecuted = true;
+            $.post(url, function (data) {
+                $('#loadingModal').hide();
+                setTimeout(function () {
                     $('#loadingModal').hide();
-                    alert(data);
-                    if (data == "please enter your otp") {
-                        let loginLink = "remakePass.html?email=" + email;
-                        window.location.href = loginLink;
-                    }
-                });
-            }, 2500);
+                    setTimeout(function () {
+                        alert(data);
+                    }, 500);
+                }, 500);
+                if (data == "please enter your otp") {
+                    let loginLink = "remakePass.html?email=" + email;
+                    window.location.href = loginLink;
+                }
+            });
         };
     </script>
 

@@ -40,12 +40,10 @@
             // "Please wait..."
             $('#loadingModal').show();
 
-            $('#loadingModal').hide();
 
             var url = "http://localhost:3001/forgetPassword/" + "?" + "username=" + userName + "&email=" + email;
             postExecuted = true;
             $.post(url, function (data) {
-                $('#loadingModal').hide();
                 setTimeout(function () {
                     $('#loadingModal').hide();
                     setTimeout(function () {

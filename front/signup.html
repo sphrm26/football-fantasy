@@ -48,30 +48,38 @@
             let password = $("#password").val();
             let password2 = $("#password2").val();
 
-            // نمایش مدال "Please wait..."
+            // "Please wait..."
             $('#loadingModal').show();
 
-            setTimeout(function () {
+            if (password != password2) {
                 $('#loadingModal').hide();
+                alert("your passwords must be the same");
+                return;
+            }
 
-                if (password != password2) {
-                    alert("your passwords must be the same");
-                    return;
+            var url = "http://localhost:3001/signup/" + "?" + "username=" + userName + "&name=" + name + "&email=" + email + "&password=" + password;
+            postExecuted = true;
+            $.post(url, function (data) {
+                if (data == "please enter your otp") {
+                    setTimeout(function () {
+                        $('#loadingModal').hide();
+                        setTimeout(function () {
+                            alert(data);
+                            let loginLink = "otp.html?email=" + email + "&password=" + password;
+                            window.location.href = loginLink;
+                        }, 500);
+                    }, 500);
+                } else {
+                    setTimeout(function () {
+                        $('#loadingModal').hide();
+                        setTimeout(function () {
+                            alert(data);
+                        }, 500);
+                    }, 500);
                 }
-
-                var url = "http://localhost:3001/signup/" + "?" + "username=" + userName + "&name=" + name + "&email=" + email + "&password=" + password;
-                postExecuted = true;
-                $.post(url, function (data) {
-                    $('#loadingModal').hide();
-                    alert(data);
-                    if (data == "please enter your otp") {
-
-                        let loginLink = "otp.html?email=" + email + "&password=" + password;
-                        window.location.href = loginLink;
-                    }
-                });
-            }, 5000);
+            });
         };
+
     </script>
 </body>
 

@@ -8,14 +8,14 @@ public class Team
 {
     [Key]
     public string teamID { get; set; }
-    public Player? outsideGK { get; set; }
-    public Player? outsideDEF { get; set; }
-    public Player? outsideMID { get; set; }
-    public Player? outsideFRW { get; set; }
-    public Player? insideGK { get; set; }
-    public List<Player>? insideDEF { get; set; }
-    public List<Player>? insideMID { get; set; }
-    public List<Player>? insideFRW { get; set; }
+    public int? outsideGK { get; set; }
+    public int? outsideDEF { get; set; }
+    public int? outsideMID { get; set; }
+    public int? outsideFRW { get; set; }
+    public int? insideGK { get; set; }
+    public List<int>? insideDEF { get; set; }
+    public List<int>? insideMID { get; set; }
+    public List<int>? insideFRW { get; set; }
 
     public Team() { }
 

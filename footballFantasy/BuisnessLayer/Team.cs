@@ -22,6 +22,26 @@ public class Team
     public Team(string id)
     {
         teamID = id;
+        outsideGK = -1;
+        outsideDEF = -1;
+        outsideMID = -1;
+        outsideFRW = -1;
+        insideGK = -1;
+        insideDEF = new List<int>();
+        insideMID = new List<int>();
+        insideFRW = new List<int>();
+        for (int i = 0; i < 4; i++)
+        {
+            insideDEF.Add(-1);
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            insideMID.Add(-1);
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            insideFRW.Add(-1);
+        }
     }
     public Player getNullPlayer()
     {
@@ -223,7 +243,7 @@ public class Team
 
     void addDEF(Player newPlayer)
     {
-        for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
             if (getPlayerByCode(insideDEF[i]) == getNullPlayer())
             {
@@ -300,7 +320,7 @@ public class Team
             outsideFRW = -1;
         }
 
-        for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
             if (insideDEF[i] == player.code)
             {

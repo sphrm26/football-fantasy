@@ -346,40 +346,37 @@ public class Team
     }
     public void swapPlayer(int code1, int code2)
     {
-        Player temp;
-        if (insideGK.code == code1 && outsideGK.code == code2)
+        int temp;
+        if (insideGK == code1 && outsideGK == code2)
         {
             temp = insideGK;
             insideGK = outsideGK;
             outsideGK = temp;
         }
-        foreach (var p1 in insideDEF)
+        for (int i = 0; i < 4; i++)
         {
-            if (p1.code == code1 && outsideDEF.code == code2)
+            if (insideDEF[i] == code1 && outsideDEF == code2)
             {
-                temp = p1;
-                insideDEF.Remove(p1);
-                insideDEF.Add(outsideDEF);
+                temp = insideDEF[i];
+                insideDEF[i] = outsideDEF;
                 outsideDEF = temp;
             }
         }
-        foreach (var p1 in insideMID)
+        for (int i = 0; i < 4; i++)
         {
-            if (p1.code == code1 && outsideMID.code == code2)
+            if (insideMID[i] == code1 && outsideMID == code2)
             {
-                temp = p1;
-                insideMID.Remove(p1);
-                insideMID.Add(outsideMID);
+                temp = insideMID[i];
+                insideMID[i] = outsideMID;
                 outsideMID = temp;
             }
         }
-        foreach (var p1 in insideFRW)
+        for (int i = 0; i < 2; i++)
         {
-            if (p1.code == code1 && outsideFRW.code == code2)
+            if (insideFRW[i] == code1 && outsideFRW == code2)
             {
-                temp = p1;
-                insideFRW.Remove(p1);
-                insideFRW.Add(outsideFRW);
+                temp = insideFRW[i];
+                insideFRW[i] = outsideFRW;
                 outsideFRW = temp;
             }
         }

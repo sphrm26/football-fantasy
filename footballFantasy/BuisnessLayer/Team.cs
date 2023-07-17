@@ -275,52 +275,52 @@ public class Team
     public void deletePlayer(int code)
     {
         Player player = PlayerHandle.findPlayerByCode(code);
-        if (insideGK.code == player.code)
+        if (insideGK == player.code)
         {
-            insideGK = null;
+            insideGK = -1;
         }
 
-        if (outsideGK.code == player.code)
+        if (outsideGK == player.code)
         {
-            outsideGK = null;
+            outsideGK = -1;
         }
 
-        if (outsideDEF.code == player.code)
+        if (outsideDEF == player.code)
         {
-            outsideDEF = null;
+            outsideDEF = -1;
         }
 
-        if (outsideMID.code == player.code)
+        if (outsideMID == player.code)
         {
-            outsideMID = null;
+            outsideMID = -1;
         }
 
-        if (outsideFRW.code == player.code)
+        if (outsideFRW == player.code)
         {
-            outsideFRW = null;
+            outsideFRW = -1;
         }
 
-        foreach (var item in insideDEF)
+        for(int i = 0; i < 4; i++)
         {
-            if (item.code == player.code)
+            if (insideDEF[i] == player.code)
             {
-                insideDEF.Remove(item);
+                insideDEF[i] = -1;
             }
         }
 
-        foreach (var item in insideMID)
+        for (int i = 0; i < 4; i++)
         {
-            if (item.code == player.code)
+            if (insideMID[i] == player.code)
             {
-                insideMID.Remove(item);
+                insideMID[i] = -1;
             }
         }
 
-        foreach (var item in insideFRW)
+        for (int i = 0; i < 4; i++)
         {
-            if (item.code == player.code)
+            if (insideFRW[i] == player.code)
             {
-                insideFRW.Remove(item);
+                insideFRW[i] = -1;
             }
         }
     }

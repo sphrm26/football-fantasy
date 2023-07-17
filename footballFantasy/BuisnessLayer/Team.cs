@@ -8,14 +8,14 @@ public class Team
 {
     [Key]
     public string teamID { get; set; }
-    public int? outsideGK { get; set; }
-    public int? outsideDEF { get; set; }
-    public int? outsideMID { get; set; }
-    public int? outsideFRW { get; set; }
-    public int? insideGK { get; set; }
-    public List<int>? insideDEF { get; set; }
-    public List<int>? insideMID { get; set; }
-    public List<int>? insideFRW { get; set; }
+    public int outsideGK { get; set; }
+    public int outsideDEF { get; set; }
+    public int outsideMID { get; set; }
+    public int outsideFRW { get; set; }
+    public int insideGK { get; set; }
+    public List<int> insideDEF { get; set; }
+    public List<int> insideMID { get; set; }
+    public List<int> insideFRW { get; set; }
 
     public Team() { }
 
@@ -26,33 +26,87 @@ public class Team
     public List<Player> getAllPlayer()
     {
         List<Player> list = new List<Player>();
-        list.Add(outsideGK);
-        list.Add(outsideDEF);
-        list.Add(outsideMID);
-        list.Add(outsideFRW);
-        list.Add(insideGK);
+        Player player = new Player();
+        player = PlayerHandle.findPlayerByCode(outsideGK);
+        if (player == null)
+        {
+            player = new Player();
+            player.code = 0;
+        }
+        list.Add(player);
+
+        player = PlayerHandle.findPlayerByCode(outsideDEF);
+        if (player == null)
+        {
+            player = new Player();
+            player.code = 0;
+        }
+        list.Add(player);
+
+        player = PlayerHandle.findPlayerByCode(outsideMID);
+        if (player == null)
+        {
+            player = new Player();
+            player.code = 0;
+        }
+        list.Add(player);
+
+        player = PlayerHandle.findPlayerByCode(outsideFRW);
+        if (player == null)
+        {
+            player = new Player();
+            player.code = 0;
+        }
+        list.Add(player);
+
+        player = PlayerHandle.findPlayerByCode(insideGK);
+        if (player == null)
+        {
+            player = new Player();
+            player.code = 0;
+        }
+        list.Add(player);
+
         foreach (var DEF in insideDEF)
         {
-            list.Add(DEF);
+            player = PlayerHandle.findPlayerByCode(DEF);
+            if (player == null)
+            {
+                player = new Player();
+                player.code = 0;
+            }
+            list.Add(player);
         }
 
         foreach (var MID in insideMID)
         {
-            list.Add(MID);
+            player = PlayerHandle.findPlayerByCode(MID);
+            if (player == null)
+            {
+                player = new Player();
+                player.code = 0;
+            }
+            list.Add(player);
         }
 
         foreach (var FRW in insideFRW)
         {
-            list.Add(FRW);
+            player = PlayerHandle.findPlayerByCode(FRW);
+            if (player == null)
+            {
+                player = new Player();
+                player.code = 0;
+            }
+            list.Add(player);
         }
 
         return list;
     }
 
-    public void addplayer(int code,int budge)
+    public void addplayer(int code, int budge)
     {
         Player newPlayer = PlayerHandle.findPlayerByCode(code);
-        budgetCheck(budge,newPlayer);
+        budgetCheck(budge, newPlayer);
         playerExistanceCheck(newPlayer);
         teammatesNumCheck(newPlayer);
         positionCheck(newPlayer);
@@ -138,18 +192,18 @@ public class Team
     {
         foreach (var pleter in getAllPlayer())
         {
-            if(pleter.code==newPlayer.code )
+            if (pleter.code == newPlayer.code)
             {
                 throw new Exception("this player already existed");
             }
         }
     }
 
-    public void budgetCheck(int budge,Player newPlayer)
+    public void budgetCheck(int budge, Player newPlayer)
     {
         if (budge < newPlayer.now_cost)
         {
-            throw new Exception ("you dont have enough mony");
+            throw new Exception("you dont have enough mony");
         }
     }
 

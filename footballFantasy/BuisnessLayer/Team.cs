@@ -23,80 +23,60 @@ public class Team
     {
         teamID = id;
     }
+    public Player getPlayerByCode(int code)
+    {
+        Player player = new Player();
+        player = PlayerHandle.findPlayerByCode(code);
+        if (player == null)
+        {
+            player = new Player();
+            player.code = -1;
+            player.first_name = "null";
+            player.id = -1;
+            player.now_cost = -1;
+            player.second_name= "null";
+            player.team = -1;
+            player.element_type = -1;
+            player.event_points = -1;
+            player.total_points= -1;
+        }
+        return player;
+    }
     public List<Player> getAllPlayer()
     {
         List<Player> list = new List<Player>();
         Player player = new Player();
-        player = PlayerHandle.findPlayerByCode(outsideGK);
-        if (player == null)
-        {
-            player = new Player();
-            player.code = 0;
-        }
+
+        player = getPlayerByCode(outsideGK);
         list.Add(player);
 
-        player = PlayerHandle.findPlayerByCode(outsideDEF);
-        if (player == null)
-        {
-            player = new Player();
-            player.code = 0;
-        }
+        player = getPlayerByCode(outsideDEF);
         list.Add(player);
 
-        player = PlayerHandle.findPlayerByCode(outsideMID);
-        if (player == null)
-        {
-            player = new Player();
-            player.code = 0;
-        }
+        player = getPlayerByCode(outsideMID);
         list.Add(player);
 
-        player = PlayerHandle.findPlayerByCode(outsideFRW);
-        if (player == null)
-        {
-            player = new Player();
-            player.code = 0;
-        }
+        player = getPlayerByCode(outsideFRW);
         list.Add(player);
 
-        player = PlayerHandle.findPlayerByCode(insideGK);
-        if (player == null)
-        {
-            player = new Player();
-            player.code = 0;
-        }
+        player = getPlayerByCode(insideGK);
         list.Add(player);
 
         foreach (var DEF in insideDEF)
         {
-            player = PlayerHandle.findPlayerByCode(DEF);
-            if (player == null)
-            {
-                player = new Player();
-                player.code = 0;
-            }
+            player = getPlayerByCode(DEF);
             list.Add(player);
         }
 
         foreach (var MID in insideMID)
         {
-            player = PlayerHandle.findPlayerByCode(MID);
-            if (player == null)
-            {
-                player = new Player();
-                player.code = 0;
-            }
+            player = getPlayerByCode(MID);
             list.Add(player);
         }
 
         foreach (var FRW in insideFRW)
         {
-            player = PlayerHandle.findPlayerByCode(FRW);
-            if (player == null)
-            {
-                player = new Player();
-                player.code = 0;
-            }
+            player = getPlayerByCode(FRW);
             list.Add(player);
         }
 

@@ -1,0 +1,101 @@
+.title {
+    height: auto;
+    text-align: center;
+    font-size: 500%;
+    color: white;
+    position: relative;
+    top: 0px;
+}
+
+.label {
+    font-size: xx-large;
+    text-align: center;
+    color: rgb(245, 245, 254);
+    margin-right: 10%;
+    position: relative;
+    position: absolute;
+    right: 53%;
+}
+
+.input {
+    font-size: 100%;
+    text-align: center;
+    color: rgb(1, 26, 189);
+    background-color: rgba(180, 60, 207, 20);
+    position: relative;
+    left: 39.5%;
+    top: 3%;
+    width: 20%;
+    padding: 1.5%;
+    border-radius: 5%;
+    justify-content: center;
+}
+
+.button {
+    font-size: x-large;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: rgb(51, 4, 59);
+    border: 5px solid rgb(255, 255, 255);
+    position: relative;
+    left: 39.5%;
+    top: 3%;
+    width: 20%;
+    padding: 1.5%;
+    border-radius: 5%;
+    justify-content: center;
+}
+
+.button:hover {
+    font-size: x-large;
+    text-align: center;
+    color: rgb(56, 28, 89);
+    background-color: rgb(255, 255, 255);
+    border: 5px solid rgb(56, 28, 89);
+    position: relative;
+    left: 39.5%;
+    top: 2.9%;
+    width: 20%;
+    padding: 1.5%;
+    border-radius: 5%;
+    justify-content: center;
+}
+
+#loadingModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.spinner {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid rgba(180, 60, 207, 20);
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

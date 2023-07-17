@@ -1,0 +1,157 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="lineup.css">
+    <title>line up</title>
+</head>
+
+<body style="background-color: rgb(255, 255, 255);">
+    <nav>
+        <ul class="grad1" style="font-size: x-large;">
+            <li onclick="window.location.href='mainPage.html'" style="font-weight: 900;"><a href="#">home</a></li>
+            <li><a href="#">line up</a></li>
+            <li><a href="#">states</a></li>
+            <li onclick="window.location.href='teams.html'"><a href="#">teams</a></li>
+        </ul>
+        <img style="width: 3.8%;position: absolute;top: 2%;right: 0.5%;" src="images/IMG_20230712_141806.jpg"
+            alt="power shell 404">
+        <img onclick="window.window.open('http://www.premierleague.com/en-gb.html')"
+            style=" width: 6%;position: absolute;top: 10%;right: 5%;" src="images/Premier_League_Logo.svg.png"
+            alt="power shell 404">
+    </nav>
+    <div class="searchdiv" style="position: relative;top: 9%;left: 53%;">
+        <form>
+            <label style="position: absolute;right: 65%;top: 2%;" class="label" for="name">name</label>
+            <input style="position: relative;left: 35%;" class="input" type="text" name="name" id="name"><br>
+
+            <label class="label" for="cars">team</label>
+            <select style="width: 23.75%;;" class="input" name="cars" id="cars">
+                <option value="volvo">All</option>
+                <option value="volvo">Arsenal</option>
+            </select>
+
+            <label style="position: relative;left: 17%;" class="label" for="name">min cost</label>
+            <input style="position: absolute;left: 67%;top: 21.4%;width: 32%;" class="input" type="text" name="name"
+                id="name"><br>
+
+            <label class="label" for="sortBy">sort by</label>
+            <select style="width: 20%;" class="input" name="sortBy" id="sortBy">
+                <option value="volvo">none</option>
+                <option value="volvo">by money</option>
+                <option value="saab">by point</option>
+            </select>
+
+            <label style="position: relative;left: 17%;" class="label" for="name">max cost</label>
+            <input style="position: absolute;left: 68%;top: 38.6%;width: 31%;" class="input" type="text" name="name"
+                id="name"><br>
+
+            <label class="label" for="arrange">arrange</label>
+            <select style="width: 18.8%;" class="input" name="arrange" id="arrange">
+                <option value="volvo">up to down</option>
+                <option value="saab">down to up</option>
+            </select>
+
+            <label style="position: relative;left: 17%;" class="label" for="name">min point</label>
+            <input style="position: absolute;left: 69%;top: 55.8%;width: 30%;" class="input" type="text" name="name"
+                id="name"><br>
+
+            <label class="label" for="cars">position</label>
+            <select style="width: 17.7%;" class="input" name="cars" id="cars">
+                <option value="volvo">All</option>
+                <option value="volvo">Goal Keeper</option>
+                <option value="saab">Defender</option>
+                <option value="opel">Midfielder</option>
+                <option value="audi">Forward</option>
+            </select>
+
+            <label style="position: relative;left: 17%;" class="label" for="name">max point</label>
+            <input style="position: absolute;left: 69.5%;top: 73%;width: 29.5%;" class="input" type="text" name="name"
+                id="name"><br>
+
+        </form>
+    </div>
+    <div class="table" id="table">
+        <div style="border: 3px solid red;width: 100%;height: 93%;position: relative;left: 0%;top: 2%;"
+            id="table-container"></div>
+        <div style="width: 40%;height: 8%;position: relative;left: 30%;top: 5%;">
+
+
+            <button onclick="pageIndexHandle('pre')" style="position: relative;left: 30%;top: -31%;" id="pre">←</button>
+            <div style="position: relative;left: 45%;top: -100%;width: 10%; text-align: center;">
+                <p id="pageIndex">1</p>
+            </div>
+            <button onclick="pageIndexHandle('next')" style="position: relative;left: 60%;top: -164%;"
+                id="pre">→</button>
+
+
+        </div>
+    </div>
+    <div style="border: 3px solid red; position: absolute; top: 10%; left: 1%;width: 50%;height: 114.8%;">
+        <img class="picture" src="images/football-field-3201.jpg" alt="line up">
+
+        <img style="z-index: 0;position: absolute;top: 15%; left: 32%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        
+            <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        
+            <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        
+            <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        
+            <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        
+            <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        
+            <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        
+            <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        
+            <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        
+            <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        
+            <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        
+            <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        
+            <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        
+            <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        
+            <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+    </div>
+
+    <script>
+        function pageIndexHandle(nextOrPre) {
+            if (nextOrPre == "pre") {
+                let number = parseInt(document.getElementById("pageIndex").innerHTML);
+                if (number == 1) {
+                    return;
+                }
+                document.getElementById("pageIndex").innerHTML = number - 1;
+            }
+            if (nextOrPre == "next") {
+                let number = parseInt(document.getElementById("pageIndex").innerHTML);
+                document.getElementById("pageIndex").innerHTML = number + 1;
+            }
+        }
+    </script>
+</body>
+
+</html>

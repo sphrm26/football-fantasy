@@ -1,0 +1,86 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup.css">
+    <title>signup</title>
+</head>
+
+<body
+    style="background-color: rgb(53, 4, 59);background-image: url('images/Premier-League-statement-graphic-NEW-pink_auto_x2.jpg');background-size: 100%; background-repeat: no-repeat;">
+    <div class="title">sign up</div>
+    <form>
+        <label class="label" for="name">name</label>
+        <input class="input" type="text" name="name" id="name"><br>
+
+        <label class="label" for="email">email</label>
+        <input class="input" type="email" name="email" id="email"><br>
+
+        <label class="label" for="username">username</label>
+        <input class="input" type="text" name="username" id="username"><br>
+
+        <label class="label" for="password">password</label>
+        <input class="input" type="password" name="password" id="password"><br>
+
+        <label class="label" for="password2">repeat password</label>
+        <input class="input" type="password" name="password2" id="password2"><br>
+    </form>
+    <button onclick="call(false)" class="button">sign up</button>
+
+    <div id="loadingModal">
+        <div class="modal-content">
+            <div class="spinner"></div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function call(postExecuted) {
+            if (postExecuted) {
+                return;
+            }
+
+            let userName = $("#username").val();
+            let name = $("#name").val();
+            let email = $("#email").val();
+            let password = $("#password").val();
+            let password2 = $("#password2").val();
+
+            // "Please wait..."
+            $('#loadingModal').show();
+
+            if (password != password2) {
+                $('#loadingModal').hide();
+                alert("your passwords must be the same");
+                return;
+            }
+
+            var url = "http://localhost:3001/signup/" + "?" + "username=" + userName + "&name=" + name + "&email=" + email + "&password=" + password;
+            postExecuted = true;
+            $.post(url, function (data) {
+                if (data == "please enter your otp") {
+                    setTimeout(function () {
+                        $('#loadingModal').hide();
+                        setTimeout(function () {
+                            alert(data);
+                            let loginLink = "otp.html?email=" + email + "&password=" + password;
+                            window.location.href = loginLink;
+                        }, 500);
+                    }, 500);
+                } else {
+                    setTimeout(function () {
+                        $('#loadingModal').hide();
+                        setTimeout(function () {
+                            alert(data);
+                        }, 500);
+                    }, 500);
+                }
+            });
+        };
+
+    </script>
+</body>
+
+</html>

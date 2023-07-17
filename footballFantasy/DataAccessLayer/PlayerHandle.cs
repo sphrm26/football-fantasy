@@ -21,7 +21,7 @@ public class PlayerHandle
         } 
     }
 
-    public static Player findPlayerByCode(int code)
+    public static Player? findPlayerByCode(int code)
     {
         using (var db = new Database())
         {

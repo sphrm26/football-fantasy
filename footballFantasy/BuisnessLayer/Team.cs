@@ -23,6 +23,24 @@ public class Team
     {
         teamID = id;
     }
+    public Player getNullPlayer()
+    {
+        Player player = new Player();
+        if (player == null)
+        {
+            player = new Player();
+            player.code = -1;
+            player.first_name = "null";
+            player.id = -1;
+            player.now_cost = -1;
+            player.second_name = "null";
+            player.team = -1;
+            player.element_type = -1;
+            player.event_points = -1;
+            player.total_points = -1;
+        }
+        return player;
+    }
     public Player getPlayerByCode(int code)
     {
         Player player = new Player();
@@ -34,11 +52,11 @@ public class Team
             player.first_name = "null";
             player.id = -1;
             player.now_cost = -1;
-            player.second_name= "null";
+            player.second_name = "null";
             player.team = -1;
             player.element_type = -1;
             player.event_points = -1;
-            player.total_points= -1;
+            player.total_points = -1;
         }
         return player;
     }
@@ -189,13 +207,15 @@ public class Team
 
     void addGK(Player newPlayer)
     {
-        if (insideGK == null)
+        if (getPlayerByCode(insideGK) == getNullPlayer())
         {
-            insideGK = newPlayer;
+            insideGK = newPlayer.code;
+            return;
         }
-        else if (outsideGK == null)
+        if (getPlayerByCode(outsideGK) == getNullPlayer())
         {
-            outsideGK = newPlayer;
+            outsideGK = newPlayer.code;
+            return;
         }
 
         throw new Exception("you cant add goalkeeper to your team");
@@ -203,39 +223,51 @@ public class Team
 
     void addDEF(Player newPlayer)
     {
-        if (insideDEF.Count < 4)
+        for(int i = 0; i < 4; i++)
         {
-            insideDEF.Add(newPlayer);
+            if (getPlayerByCode(insideDEF[i]) == getNullPlayer())
+            {
+                insideDEF[i] = newPlayer.code;
+                return;
+            }
         }
-        else if (outsideDEF == null)
+        if (getPlayerByCode(outsideDEF) == getNullPlayer())
         {
-            outsideDEF = newPlayer;
+            outsideDEF = newPlayer.code;
         }
         throw new Exception("your cant add defender to your team");
     }
 
     void addMID(Player newPlayer)
     {
-        if (insideMID.Count < 4)
+        for (int i = 0; i < 4; i++)
         {
-            insideMID.Add(newPlayer);
+            if (getPlayerByCode(insideMID[i]) == getNullPlayer())
+            {
+                insideMID[i] = newPlayer.code;
+                return;
+            }
         }
-        else if (outsideMID == null)
+        if (getPlayerByCode(outsideMID) == getNullPlayer())
         {
-            outsideMID = newPlayer;
+            outsideMID = newPlayer.code;
         }
         throw new Exception("your cant add midfielder to your team");
     }
 
     void addFRW(Player newPlayer)
     {
-        if (insideFRW.Count < 2)
+        for (int i = 0; i < 4; i++)
         {
-            insideFRW.Add(newPlayer);
+            if (getPlayerByCode(insideFRW[i]) == getNullPlayer())
+            {
+                insideFRW[i] = newPlayer.code;
+                return;
+            }
         }
-        else if (outsideFRW == null)
+        if (outsideFRW == null)
         {
-            outsideFRW = newPlayer;
+            outsideFRW = newPlayer.code;
         }
         throw new Exception("your cant add forward to your team");
     }

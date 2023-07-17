@@ -113,34 +113,34 @@ public class Team
     public void teammatesNumCheck(Player newPlayer)
     {
         int sameTeamNum = 0;
-        if (outsideGK.team == newPlayer.team)
+        if (getPlayerByCode(outsideGK).team == newPlayer.team)
         {
             sameTeamNum++;
         }
 
-        if (outsideDEF.team == newPlayer.team)
+        if (getPlayerByCode(outsideDEF).team == newPlayer.team)
         {
             sameTeamNum++;
         }
 
-        if (outsideMID.team == newPlayer.team)
+        if (getPlayerByCode(outsideMID).team == newPlayer.team)
         {
             sameTeamNum++;
         }
 
-        if (outsideFRW.team == newPlayer.team)
+        if (getPlayerByCode(outsideFRW).team == newPlayer.team)
         {
             sameTeamNum++;
         }
 
-        if (insideGK.team == newPlayer.team)
+        if (getPlayerByCode(insideGK).team == newPlayer.team)
         {
             sameTeamNum++;
         }
 
         foreach (var player in insideDEF)
         {
-            if (player.team == newPlayer.team)
+            if (getPlayerByCode(player).team == newPlayer.team)
             {
                 sameTeamNum++;
             }
@@ -148,7 +148,7 @@ public class Team
 
         foreach (var player in insideMID)
         {
-            if (player.team == newPlayer.team)
+            if (getPlayerByCode(player).team == newPlayer.team)
             {
                 sameTeamNum++;
             }
@@ -156,7 +156,7 @@ public class Team
 
         foreach (var player in insideFRW)
         {
-            if (player.team == newPlayer.team)
+            if (getPlayerByCode(player).team == newPlayer.team)
             {
                 sameTeamNum++;
             }

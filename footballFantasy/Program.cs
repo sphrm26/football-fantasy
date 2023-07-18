@@ -1,4 +1,3 @@
-using footballFantasy.Model;
 using ServiceStack;
 
 namespace footballFantasy
@@ -18,6 +17,7 @@ namespace footballFantasy
             });
 
             app.MapPut("/updatedatabase/", BuisnessLayer.apiRequest.json2csharp);
+            app.MapPut("endevent", BuisnessLayer.UserHandel.calculateAllUsersPoint);
 
             app.MapPost("/signup/", PresentationLayer.signUp.signup);
             app.MapPut("/userPoint/", PresentationLayer.userPoint.calculatePoint);

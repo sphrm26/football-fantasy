@@ -4,7 +4,7 @@ namespace footballFantasy.PresentationLayer
 {
     public class search
     {
-        public static List<Object> searchSndFilter(string name, int minPrice, int maxPrice, int position, int minScore, int maxScore, int teamCode, int sortBy, int order, int index, int length)
+        public static List<Object> searchAndFilter(string name, int minPrice, int maxPrice, int position, int minScore, int maxScore, int teamCode, int sortBy, int order, int index, int length)
         {
             List<Player> list = BuisnessLayer.search.searchPlayers(name, minPrice, maxPrice, position, minScore, maxScore, teamCode);
             //sort

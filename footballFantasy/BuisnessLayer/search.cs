@@ -127,11 +127,38 @@ namespace footballFantasy.BuisnessLayer
             return true;
         }
 
-        /*public static int searchEngine(string name, string first_name, string second_name)
+        public static int? searchPriority(string searched, string sourse)
+        {
+            if (firstSame(searched, sourse))
+            {
+                return 1;
+            }
+            if (contain(searched, sourse))
+            {
+                return 2;
+            }
+            if (dictationProblem(searched, sourse))
+            {
+                return 3;
+            }
+            if (wordsInOrder(searched, sourse))
+            {
+                return 4;
+            }
+            if (haveWords(searched, sourse))
+            {
+                return 5;
+            }
+            return null;
+
+        }
+
+        public static int searchEngine(string name, string first_name, string second_name)
         {
             name = name.ToLower();
             first_name = first_name.ToLower();
             second_name = second_name.ToLower();
+
 
             //search by first name
             //search by first name
@@ -139,7 +166,7 @@ namespace footballFantasy.BuisnessLayer
             //search by last name
             //search by full name
             //search by full name
-        }*/
+        }
 
         public static List<Player> searchPlayers(string name, int minPrice, int maxPrice, int Position, int minScore, int maxScore, int teamCode)
         {

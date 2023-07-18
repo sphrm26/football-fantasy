@@ -25,6 +25,7 @@ namespace footballFantasy
             app.MapGet("/getMoney/", PresentationLayer.getMoney.gettingMoney);
             app.MapPost("/OTPCheck/", PresentationLayer.OTPChecking.OTPCheck);
             app.MapGet("/login/", PresentationLayer.logIn.login);
+            app.MapGet("/search/", PresentationLayer.search.searchAndFilter);
             app.MapPost("/forgetPassword/", PresentationLayer.forgetPassWord.remakePassword);
             app.MapPost("/getOTP/", PresentationLayer.forgetPassWord.getOTP);
             //for checking all waitusers

@@ -153,19 +153,58 @@ namespace footballFantasy.BuisnessLayer
 
         }
 
-        public static int searchEngine(string name, string first_name, string second_name)
+        public static int? searchEngine(string name, string first_name, string second_name)
         {
             name = name.ToLower();
             first_name = first_name.ToLower();
             second_name = second_name.ToLower();
 
+            int? result = new int();
 
             //search by first name
+            result = searchPriority(name, first_name);
+            if (result != null)
+            {
+                return result;
+            }
+
             //search by first name
+            result = searchPriority(first_name, name);
+            if (result != null)
+            {
+                return result;
+            }
+
             //search by last name
+            result = searchPriority(name, second_name);
+            if (result != null)
+            {
+                return result;
+            }
+
             //search by last name
+            result = searchPriority(second_name, name);
+            if (result != null)
+            {
+                return result;
+            }
+
             //search by full name
+            result = searchPriority(name, first_name + " " + second_name);
+            if (result != null)
+            {
+                return result;
+            }
+
             //search by full name
+            result = searchPriority(first_name + " " + second_name, name);
+            if (result != null)
+            {
+                return result;
+            }
+
+            return null;
+
         }
 
         public static List<Player> searchPlayers(string name, int minPrice, int maxPrice, int Position, int minScore, int maxScore, int teamCode)

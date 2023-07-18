@@ -1,5 +1,4 @@
 ﻿using footballFantasy.Model;
-using ServiceStack;
 
 namespace footballFantasy.DataAccessLayer
 {
@@ -184,11 +183,50 @@ namespace footballFantasy.DataAccessLayer
         }
         public static void saveChanges(User user)
         {
-            var db = new Database();
+            using (var db = new Database())
+            {
+                /*foreach(var item in db.users)
+                {
+                    if (item.email == user.email)
+                    {
+                        db.users[i] = user;
+                        db.SaveChanges();
+                        return;
+                    }
+                    i++;
+                }*/
+                Console.WriteLine(user.team.insideMID[0]);
+                Console.WriteLine(user.team.insideMID[1]);
+                Console.WriteLine(user.team.insideMID[2]);
+                Console.WriteLine(user.team.insideMID[3]);
 
-            var record = db.users.FirstOrDefault(record => record.userName == user.userName);
-            record = user;
-            db.SaveChanges();
+                var record = db.users.FirstOrDefault(record => record.userName == user.userName);
+                record.team.insideMID[0] = user.team.insideMID[0];
+
+                Console.WriteLine(record.team.insideMID[0]);
+                Console.WriteLine(record.team.insideMID[1]);
+                Console.WriteLine(record.team.insideMID[2]);
+                Console.WriteLine(record.team.insideMID[3]);
+
+                Console.WriteLine(record.team.insideMID[0]);
+                Console.WriteLine(record.team.insideMID[1]);
+                Console.WriteLine(record.team.insideMID[2]);
+                Console.WriteLine(record.team.insideMID[3]);
+
+                db.users.Remove(record);
+                db.SaveChanges();
+                db.users.Add(user);
+                db.SaveChanges();
+
+
+                var record1 = db.users.FirstOrDefault(record => record.userName == user.userName);
+
+
+                Console.WriteLine(record1.team.insideMID[0]);
+                Console.WriteLine(record1.team.insideMID[1]);
+                Console.WriteLine(record1.team.insideMID[2]);
+                Console.WriteLine(record1.team.insideMID[3]);
+            }
         }
 
         public static List<User> getUserList()

@@ -46,19 +46,17 @@ public class Team
     public Player getNullPlayer()
     {
         Player player = new Player();
-        if (player == null)
-        {
-            player = new Player();
-            player.code = -1;
-            player.first_name = "null";
-            player.id = -1;
-            player.now_cost = -1;
-            player.second_name = "null";
-            player.team = -1;
-            player.element_type = -1;
-            player.event_points = -1;
-            player.total_points = -1;
-        }
+        player = new Player();
+        player.code = -1;
+        player.first_name = "null";
+        player.id = -1;
+        player.now_cost = -1;
+        player.second_name = "null";
+        player.team = -1;
+        player.element_type = -1;
+        player.event_points = -1;
+        player.total_points = -1;
+
         return player;
     }
     public Player getPlayerByCode(int code)
@@ -262,7 +260,7 @@ public class Team
     {
         for (int i = 0; i < 4; i++)
         {
-            if (getPlayerByCode(insideMID[i]) == getNullPlayer())
+            if (getPlayerByCode(insideMID[i]).code == getNullPlayer().code)
             {
                 insideMID[i] = newPlayer.code;
                 return;

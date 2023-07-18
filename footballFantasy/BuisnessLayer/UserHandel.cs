@@ -32,7 +32,7 @@ namespace footballFantasy.BuisnessLayer
                 pl = PlayerHandle.findPlayerByCode(player);
                 if (pl != null)
                 {
-                    user.weeklyPoint += 2 * (plr.event_points);
+                    user.weeklyPoint += 2 * (pl.event_points);
                 }
             }
 
@@ -203,7 +203,8 @@ namespace footballFantasy.BuisnessLayer
         public static List<object> getAllPlayers(User user)
         {
             List<object> result = new List<object>();
-            foreach (var player in user.team.getAllPlayer())
+            List<Player> players = user.team.getAllPlayer();
+            foreach (var player in players)
             {
                 result.Add(player);
             }

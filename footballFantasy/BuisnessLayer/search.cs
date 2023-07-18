@@ -210,6 +210,11 @@ namespace footballFantasy.BuisnessLayer
         public static List<Player> searchPlayers(string name, int minPrice, int maxPrice, int Position, int minScore, int maxScore, int teamCode)
         {
             List<Player> list = new List<Player>();
+            List<Player> tempList1 = new List<Player>();
+            List<Player> tempList2 = new List<Player>();
+            List<Player> tempList3 = new List<Player>();
+            List<Player> tempList4 = new List<Player>();
+            List<Player> tempList5 = new List<Player>();
             List<Player> players = DataAccessLayer.PlayerHandle.GetAllPlayers();
             foreach (var player in players)
             {
@@ -219,9 +224,38 @@ namespace footballFantasy.BuisnessLayer
                     continue;
                 }
 
-                // call search engine
                 // add to list
+                int? result = searchEngine(name, player.first_name, player.second_name);
+                if (result == null)
+                {
+                    continue;
+                }
+                if (result == 1)
+                {
+                    tempList1.Add(player);
+                }
+                if (result == 2)
+                {
+                    tempList2.Add(player);
+                }
+                if (result == 3)
+                {
+                    tempList3.Add(player);
+                }
+                if (result == 4)
+                {
+                    tempList4.Add(player);
+                }
+                if (result == 5)
+                {
+                    tempList5.Add(player);
+                }
             }
+            list.AddRange(tempList1);
+            list.AddRange(tempList2);
+            list.AddRange(tempList3);
+            list.AddRange(tempList4);
+            list.AddRange(tempList5);
             return list;
         }
     }

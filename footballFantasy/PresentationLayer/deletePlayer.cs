@@ -1,17 +1,17 @@
-﻿using footballFantasy.Model;
-using footballFantasy.BuisnessLayer;
+﻿using footballFantasy.BuisnessLayer;
+using footballFantasy.Model;
 namespace footballFantasy.PresentationLayer;
 
 public class deletePlayer
 {
-    public static string delete_Player(string token ,int code)
+    public static string delete_Player(string token, int code)
     {
         User user = UserHandel.GetUserByToken(token);
-        
+
         try
         {
-            user.team.deletePlayer(code);
-            UserHandel.addMoneyToWallet(code , user);
+            BuisnessLayer.Team.deletePlayer(code, user);
+            UserHandel.addMoneyToWallet(code, user);
         }
         catch (Exception ex)
         {

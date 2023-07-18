@@ -5,16 +5,6 @@ namespace footballFantasy
 {
     public class Program
     {
-        public static object team()
-        {
-
-            using (var db = new Database())
-            {
-                var record = db.users.FirstOrDefault(record => record.userName =="sphrm26");
-                return record.team.outsideDEF;
-            }
-
-        }
         public static void Main(String[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -28,7 +18,6 @@ namespace footballFantasy
             });
 
             app.MapPut("/updatedatabase/", BuisnessLayer.apiRequest.json2csharp);
-            app.MapGet("/teamtest/", team);
 
             app.MapPost("/signup/", PresentationLayer.signUp.signup);
             app.MapPut("/userPoint/", PresentationLayer.userPoint.calculatePoint);

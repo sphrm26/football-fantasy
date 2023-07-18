@@ -5,15 +5,15 @@ namespace footballFantasy.PresentationLayer
 {
     public class addPlayer
     {
-         public static string add_Player(string tk,int code)
+        public static string add_Player(string token, int code)
         {
-            User user = UserHandel.GetUserByToken(tk);
-                user.team.addplayer(code,user.budget);
-                UserHandel.deleteMoneyToWallet(code, user);
+            User user = UserHandel.GetUserByToken(token);
             try
             {
+                BuisnessLayer.Team.addplayer(code, user.budget, user);
+                UserHandel.deleteMoneyToWallet(code, user);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return ex.Message;
             }

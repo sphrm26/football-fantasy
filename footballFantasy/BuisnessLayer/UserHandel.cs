@@ -9,7 +9,7 @@ namespace footballFantasy.BuisnessLayer
         {
             user.weeklyPoint = 0;
             var pl = new Player();
-            foreach (var player in user.team.insideDEF)
+            foreach (var player in user.insideDEF)
             {
                 pl = PlayerHandle.findPlayerByCode(player);
                 if (pl != null)
@@ -18,7 +18,7 @@ namespace footballFantasy.BuisnessLayer
                 }
             }
 
-            foreach (var player in user.team.insideMID)
+            foreach (var player in user.insideMID)
             {
                 pl = PlayerHandle.findPlayerByCode(player);
                 if (pl != null)
@@ -27,7 +27,7 @@ namespace footballFantasy.BuisnessLayer
                 }
             }
 
-            foreach (var player in user.team.insideFRW)
+            foreach (var player in user.insideFRW)
             {
                 pl = PlayerHandle.findPlayerByCode(player);
                 if (pl != null)
@@ -36,31 +36,31 @@ namespace footballFantasy.BuisnessLayer
                 }
             }
 
-            pl = PlayerHandle.findPlayerByCode(user.team.insideGK);
+            pl = PlayerHandle.findPlayerByCode(user.insideGK);
             if (pl != null)
             {
                 user.weeklyPoint += 2 * (pl.event_points);
             }
 
-            pl = PlayerHandle.findPlayerByCode(user.team.outsideGK);
+            pl = PlayerHandle.findPlayerByCode(user.outsideGK);
             if (pl != null)
             {
                 user.weeklyPoint += 2 * (pl.event_points);
             }
 
-            pl = PlayerHandle.findPlayerByCode(user.team.outsideDEF);
+            pl = PlayerHandle.findPlayerByCode(user.outsideDEF);
             if (pl != null)
             {
                 user.weeklyPoint += 2 * (pl.event_points);
             }
 
-            pl = PlayerHandle.findPlayerByCode(user.team.outsideMID);
+            pl = PlayerHandle.findPlayerByCode(user.outsideMID);
             if (pl != null)
             {
                 user.weeklyPoint += 2 * (pl.event_points);
             }
 
-            pl = PlayerHandle.findPlayerByCode(user.team.outsideFRW);
+            pl = PlayerHandle.findPlayerByCode(user.outsideFRW);
             if (pl != null)
             {
                 user.weeklyPoint += 2 * (pl.event_points);
@@ -203,7 +203,7 @@ namespace footballFantasy.BuisnessLayer
         public static List<object> getAllPlayers(User user)
         {
             List<object> result = new List<object>();
-            List<Player> players = user.team.getAllPlayer();
+            List<Player> players = BuisnessLayer.Team.getAllPlayer(user);
             foreach (var player in players)
             {
                 result.Add(player);

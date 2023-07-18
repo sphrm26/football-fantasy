@@ -7,6 +7,10 @@ namespace footballFantasy.BuisnessLayer
     {
         public static bool inPriceRange(int minPrice, int maxPrice, int price)
         {
+            if (maxPrice == -1)
+            {
+                return true;
+            }
             if (price >= minPrice && price <= maxPrice)
             {
                 return true;
@@ -27,6 +31,10 @@ namespace footballFantasy.BuisnessLayer
         }
         public static bool inPointRange(int minPoint, int maxPoint, int playerPoint)
         {
+            if(maxPoint == -1)
+            {
+                return true;
+            }
             if (playerPoint >= minPoint && playerPoint <= maxPoint)
             {
                 return true;
@@ -94,6 +102,10 @@ namespace footballFantasy.BuisnessLayer
                 sourse = searched;
                 searched = temp;
             }
+            if(searched.Length < 6)
+            {
+                return false;
+            }
             int counter = 0;
             for (int i = 0; i < searched.Length; i++)
             {
@@ -102,7 +114,7 @@ namespace footballFantasy.BuisnessLayer
                     counter++;
                 }
             }
-            if (counter <= 2)
+            if (counter == 2 || counter == 1)
             {
                 return true;
             }
@@ -199,7 +211,7 @@ namespace footballFantasy.BuisnessLayer
             //search by full name
             result = searchPriority(first_name + " " + second_name, name);
             if (result != null)
-            {
+            {   
                 return result;
             }
 

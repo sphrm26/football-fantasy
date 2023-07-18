@@ -19,7 +19,8 @@ namespace footballFantasy.PresentationLayer
                     second_name = player.second_name,
                     total_points = player.total_points,
                     now_cost = player.now_cost,
-                    taem = player.team
+                    team = player.team,
+                    element_type = player.element_type
                 });
             }
             return result;

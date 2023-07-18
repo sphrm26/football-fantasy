@@ -1,5 +1,4 @@
 ﻿using footballFantasy.Model;
-using ServiceStack;
 
 namespace footballFantasy.DataAccessLayer
 {
@@ -184,11 +183,16 @@ namespace footballFantasy.DataAccessLayer
         }
         public static void saveChanges(User user)
         {
-            var db = new Database();
+            using (var db = new Database())
+            {
 
-            var record = db.users.FirstOrDefault(record => record.userName == user.userName);
-            record = user;
-            db.SaveChanges();
+                var record = db.users.FirstOrDefault(record => record.email == user.email);
+                db.users.Remove(record);
+
+                db.users.Add(user);
+
+                db.SaveChanges();
+            }
         }
 
         public static List<User> getUserList()

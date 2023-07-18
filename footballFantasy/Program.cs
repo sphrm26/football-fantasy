@@ -1,3 +1,6 @@
+using footballFantasy.Model;
+using ServiceStack;
+
 namespace footballFantasy
 {
     public class Program
@@ -13,6 +16,8 @@ namespace footballFantasy
                 context.Response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
                 return next();
             });
+
+            app.MapPut("/updatedatabase/", BuisnessLayer.apiRequest.json2csharp);
 
             app.MapPost("/signup/", PresentationLayer.signUp.signup);
             app.MapPut("/userPoint/", PresentationLayer.userPoint.calculatePoint);

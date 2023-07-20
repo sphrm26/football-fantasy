@@ -6,8 +6,7 @@ namespace footballFantasy.PresentationLayer
     {
         public static List<Object> searchAndFilter(string name, int minPrice, int maxPrice, int position, int minScore, int maxScore, int teamCode, int sortBy, int order, int index, int length)
         {
-            List<Player> list = BuisnessLayer.search.searchPlayers(name, minPrice, maxPrice, position, minScore, maxScore, teamCode);
-            //sort
+            List<Player> list = BuisnessLayer.search.searchPlayers(name, minPrice, maxPrice, position, minScore, maxScore, teamCode,sortBy,order);
             list = BuisnessLayer.pagination.paging<Player>(list, index, length);
             List<Object> result = new List<Object>();
             foreach (Player player in list)
@@ -26,4 +25,5 @@ namespace footballFantasy.PresentationLayer
             return result;
         }
     }
+    
 }

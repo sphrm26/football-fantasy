@@ -11,6 +11,7 @@ public class Player
     public int now_cost { get; set; }
     public string second_name { get; set; }
     public int team { get; set; }
+    public int team_code { get; set; }
     public int element_type { get; set; }
     public int event_points { get; set; }
     public int total_points { get; set;}

@@ -7,6 +7,10 @@ namespace footballFantasy.BuisnessLayer
     {
         public static bool inPriceRange(int minPrice, int maxPrice, int price)
         {
+            if (maxPrice == -1)
+            {
+                return true;
+            }
             if (price >= minPrice && price <= maxPrice)
             {
                 return true;
@@ -27,6 +31,10 @@ namespace footballFantasy.BuisnessLayer
         }
         public static bool inPointRange(int minPoint, int maxPoint, int playerPoint)
         {
+            if(maxPoint == -1)
+            {
+                return true;
+            }
             if (playerPoint >= minPoint && playerPoint <= maxPoint)
             {
                 return true;
@@ -94,6 +102,10 @@ namespace footballFantasy.BuisnessLayer
                 sourse = searched;
                 searched = temp;
             }
+            if(searched.Length < 6)
+            {
+                return false;
+            }
             int counter = 0;
             for (int i = 0; i < searched.Length; i++)
             {
@@ -102,7 +114,7 @@ namespace footballFantasy.BuisnessLayer
                     counter++;
                 }
             }
-            if (counter <= 2)
+            if (counter == 2 || counter == 1)
             {
                 return true;
             }
@@ -127,23 +139,94 @@ namespace footballFantasy.BuisnessLayer
             return true;
         }
 
-        /*public static int searchEngine(string name, string first_name, string second_name)
+        public static int? searchPriority(string searched, string sourse)
+        {
+            if (firstSame(searched, sourse))
+            {
+                return 1;
+            }
+            if (contain(searched, sourse))
+            {
+                return 2;
+            }
+            if (dictationProblem(searched, sourse))
+            {
+                return 3;
+            }
+            if (wordsInOrder(searched, sourse))
+            {
+                return 4;
+            }
+            if (haveWords(searched, sourse))
+            {
+                return 5;
+            }
+            return null;
+
+        }
+
+        public static int? searchEngine(string name, string first_name, string second_name)
         {
             name = name.ToLower();
             first_name = first_name.ToLower();
             second_name = second_name.ToLower();
 
+            int? result = new int();
+
             //search by first name
+            result = searchPriority(name, first_name);
+            if (result != null)
+            {
+                return result;
+            }
+
             //search by first name
+            result = searchPriority(first_name, name);
+            if (result != null)
+            {
+                return result;
+            }
+
             //search by last name
+            result = searchPriority(name, second_name);
+            if (result != null)
+            {
+                return result;
+            }
+
             //search by last name
+            result = searchPriority(second_name, name);
+            if (result != null)
+            {
+                return result;
+            }
+
             //search by full name
+            result = searchPriority(name, first_name + " " + second_name);
+            if (result != null)
+            {
+                return result;
+            }
+
             //search by full name
-        }*/
+            result = searchPriority(first_name + " " + second_name, name);
+            if (result != null)
+            {   
+                return result;
+            }
+
+            return null;
+
+        }
 
         public static List<Player> searchPlayers(string name, int minPrice, int maxPrice, int Position, int minScore, int maxScore, int teamCode)
         {
             List<Player> list = new List<Player>();
+            List<Player> tempList1 = new List<Player>();
+            List<Player> tempList2 = new List<Player>();
+            List<Player> tempList3 = new List<Player>();
+            List<Player> tempList4 = new List<Player>();
+            List<Player> tempList5 = new List<Player>();
             List<Player> players = DataAccessLayer.PlayerHandle.GetAllPlayers();
             foreach (var player in players)
             {
@@ -153,9 +236,38 @@ namespace footballFantasy.BuisnessLayer
                     continue;
                 }
 
-                // call search engine
                 // add to list
+                int? result = searchEngine(name, player.first_name, player.second_name);
+                if (result == null)
+                {
+                    continue;
+                }
+                if (result == 1)
+                {
+                    tempList1.Add(player);
+                }
+                if (result == 2)
+                {
+                    tempList2.Add(player);
+                }
+                if (result == 3)
+                {
+                    tempList3.Add(player);
+                }
+                if (result == 4)
+                {
+                    tempList4.Add(player);
+                }
+                if (result == 5)
+                {
+                    tempList5.Add(player);
+                }
             }
+            list.AddRange(tempList1);
+            list.AddRange(tempList2);
+            list.AddRange(tempList3);
+            list.AddRange(tempList4);
+            list.AddRange(tempList5);
             return list;
         }
     }

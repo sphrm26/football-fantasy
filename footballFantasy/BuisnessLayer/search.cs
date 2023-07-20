@@ -219,7 +219,7 @@ namespace footballFantasy.BuisnessLayer
 
         }
 
-        public static List<Player> searchPlayers(string name, int minPrice, int maxPrice, int Position, int minScore, int maxScore, int teamCode)
+        public static List<Player> searchPlayers(string name, int minPrice, int maxPrice, int Position, int minScore, int maxScore, int teamCode,int sortBy,int order)
         {
             List<Player> list = new List<Player>();
             List<Player> tempList1 = new List<Player>();
@@ -268,7 +268,62 @@ namespace footballFantasy.BuisnessLayer
             list.AddRange(tempList3);
             list.AddRange(tempList4);
             list.AddRange(tempList5);
+            return sortPlayerSearchResult(list,sortBy,order);
+        }
+        public static List<Player> sortPlayerSearchResult(List<Player> list , int sortBy, int order)
+        {
+            if (sortBy == 0)
+            {
+                return list;
+            }
+            for (int i = 0; i < list.Count -1; i++)
+            {
+                for (int j = i+1 ; j <list.Count ; j++)
+                {
+                    if (compareOrder(order, sortBy, list[i], list[j]))
+                    {
+                        (list[i], list[j]) = (list[j], list[i]);
+                    }
+                }    
+            }
             return list;
+        }
+        public static bool compareOrder(int order , int sortBy , Player p1 , Player p2)
+        {
+            if (sortBy == 1 && order == 1)
+            {
+                if (p1.now_cost > p2.now_cost)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            if (sortBy == 2 && order == 1)
+            {
+                if (p1.total_points > p2.total_points)
+                {
+                    return true;
+                }
+                return false;
+            }
+            if (sortBy == 1 && order == 2)
+            {
+                if (p1.now_cost < p2.now_cost)
+                {
+                    return true;
+                }
+                return false;
+            }
+            if (sortBy == 2 && order == 2)
+            {
+                if (p1.total_points < p2.total_points)
+                {
+                    return true;
+                }
+                return false;
+            }
+            return false;
         }
     }
 }

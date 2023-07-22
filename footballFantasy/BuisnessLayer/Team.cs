@@ -91,7 +91,7 @@ public class Team
 
     }
 
-    public static void positionCheck(Player newPlayer,User user)
+    public static void positionCheck(Player newPlayer, User user)
     {
         if (newPlayer.element_type == 1)
         {
@@ -111,9 +111,9 @@ public class Team
             return;
         }
 
-        if (newPlayer.element_type == 3)
+        if (newPlayer.element_type == 4)
         {
-            addFRW(newPlayer,user);
+            addFRW(newPlayer, user);
             return;
         }
     }
@@ -169,7 +169,7 @@ public class Team
             }
         }
 
-        if (sameTeamNum > 3)
+        if (sameTeamNum >= 3)
         {
             throw new Exception("you cant add more than 3 player from same team");
         }
@@ -248,7 +248,7 @@ public class Team
 
     static void addFRW(Player newPlayer, User user)
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 2; i++)
         {
             if (user.insideFRW[i] == -1)
             {
@@ -323,6 +323,7 @@ public class Team
             temp = user.insideGK;
             user.insideGK = user.outsideGK;
             user.outsideGK = temp;
+            return;
         }
         for (int i = 0; i < 4; i++)
         {
@@ -331,6 +332,7 @@ public class Team
                 temp = user.insideDEF[i];
                 user.insideDEF[i] = user.outsideDEF;
                 user.outsideDEF = temp;
+                return;
             }
         }
         for (int i = 0; i < 4; i++)
@@ -340,6 +342,7 @@ public class Team
                 temp = user.insideMID[i];
                 user.insideMID[i] = user.outsideMID;
                 user.outsideMID = temp;
+                return;
             }
         }
         for (int i = 0; i < 2; i++)
@@ -349,6 +352,7 @@ public class Team
                 temp = user.insideFRW[i];
                 user.insideFRW[i] = user.outsideFRW;
                 user.outsideFRW = temp;
+                return;
             }
         }
         throw new Exception("your player not exist or not same position");

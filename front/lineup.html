@@ -7,7 +7,7 @@
     <title>line up</title>
 </head>
 
-<body style="background-color: rgb(255, 255, 255);">
+<body onclick="search(),lineup()" style="background-color: rgb(255, 255, 255);">
     <nav>
         <ul class="grad1" style="font-size: x-large;">
             <li onclick="window.location.href='mainPage.html'" style="font-weight: 900;"><a href="#">home</a></li>
@@ -57,7 +57,7 @@
 
             <label class="label" for="sortBy">sort by</label>
             <select style="width: 20%;" class="input" name="sortBy" id="sortBy">
-                <option value=-1>none</option>
+                <option value=0>none</option>
                 <option value=1>by money</option>
                 <option value=2>by point</option>
             </select>
@@ -68,8 +68,8 @@
 
             <label class="label" for="arrange">arrange</label>
             <select style="width: 18.8%;" class="input" name="arrange" id="arrange">
-                <option value=1>up to down</option>
-                <option value=2>down to up</option>
+                <option value=2>up to down</option>
+                <option value=1>down to up</option>
             </select>
 
             <label style="position: relative;left: 17%;" class="label" for="minPoint">min point</label>
@@ -92,7 +92,17 @@
         </form>
     </div>
     <div onclick="search()" class="table" id="table">
-
+        <table style="height: 10%;">
+            <tr>
+                <th style="width: 21.8%;">image</th>
+                <th style="width: 12.5%;">first name</th>
+                <th style="width: 17.6%;padding: 0%;">last name</th>
+                <th style="width: 2.5%;">price</th>
+                <th style="width: 10%;">total Point</th>
+                <th style="width: 1%;">position</th>
+                <th>team</th>
+            </tr>
+        </table>
         <div style="border: 3px solid rgba(180, 60, 207, 20);width: 98%;height: auto;position: relative;left: 0.5%;margin-top: 0.5%;"
             id="table-container">
         </div>
@@ -100,73 +110,130 @@
 
 
 
-        <div
-            style="width: 40%;height:5%;position: relative;left: 30%;top: 200%;margin: 4%;border: 2px solid red;margin: 0%;">
+        <div style="width: 40%;height:5%;position: relative;left: 30%;top: 200%;margin: 4%;margin: 0%;">
 
 
             <button onclick="pageIndexHandle('pre')" style="position: relative;left: 30%;top: 20%;" id="pre">←</button>
-            <div style="position: relative;left: 45%;top: -85%;width: 10%; text-align: center;">
+            <div style="position: relative;left: 45%;top: -77%;width: 10%; text-align: center;">
                 <p id="pageIndex">1</p>
             </div>
-            <button onclick="pageIndexHandle('next')" style="position: relative;left: 60%;top: -194.25%;"
+            <button onclick="pageIndexHandle('next')" style="position: relative;left: 60%;top: -174%;"
                 id="pre">→</button>
 
 
 
         </div>
     </div>
-    <div
-        style="border: 3px solid rgba(180, 60, 207, 20); position: absolute; top: 10%; left: 1%;width: 50%;height: 114.8%;">
+    <div onclick="lineup()"
+        style="border: 3px solid rgba(180, 60, 207, 20); position: absolute; top: 10%; left: 1%;width: 50%;height: 137.5%;">
         <img class="picture" src="images/football-field-3201.jpg" alt="line up">
 
-        <img style="z-index: 0;position: absolute;top: 15%; left: 32%;"
+        <div style="align-items: center;z-index: 13;position: absolute;width: 40%;top: 2.5%;right: 15%;">
+            <button id="add" onclick="choose('add')" class="buttonClicked">add player</button>
+            <button id="del" onclick="choose('del')" class="button">delete player</button>
+            <button id="sub" onclick="choose('sub')" class="button">substitut player</button>
+        </div>
+
+        <div style="padding: 0%;margin: 0%;position: absolute;top: 0.0001%;left: 15%;width: 20%;">
+            <p style="color: rgb(56, 28, 89);font-size: x-large;font-weight: 1000;text-align: center;" id="money"></p>
+        </div>
+
+        <img onclick="delOrSubPlayer(this.alt)" id="insideGK"
+            style="z-index: 0;position: absolute;top: 10%; right: 45%;"
             src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
 
-        <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
+        <img onclick="delOrSubPlayer(this.alt)" id="outsideGK"
+            style="z-index: 0;position: absolute;top: 85%; right: 12%;"
             src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
 
-        <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
+        <img onclick="delOrSubPlayer(this.alt)" id="insideDEF1"
+            style="z-index: 0;position: absolute;top: 24%; right: 12%;"
             src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
 
-        <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
+        <img onclick="delOrSubPlayer(this.alt)" id="insideDEF2"
+            style="z-index: 0;position: absolute;top: 24%; right: 33%;"
             src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
 
-        <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
-            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        <img onclick="delOrSubPlayer(this.alt)" id="insideDEF3"
+            style="z-index: 0;position: absolute;top: 24%; right: 56%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt=0>
 
-        <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
-            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        <img onclick="delOrSubPlayer(this.alt)" id="insideDEF4"
+            style="z-index: 0;position: absolute;top: 24%; right: 80%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt=0>
 
-        <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
-            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        <img onclick="delOrSubPlayer(this.alt)" id="outsideDEF"
+            style="z-index: 0;position: absolute;top: 85%; right: 35%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt=0>
 
-        <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
-            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        <img onclick="delOrSubPlayer(this.alt)" id="insideMID1"
+            style="z-index: 0;position: absolute;top: 44%; right: 12%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt=0>
 
-        <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
-            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        <img onclick="delOrSubPlayer(this.alt)" id="insideMID2"
+            style="z-index: 0;position: absolute;top: 44%; right: 33%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt=0>
 
-        <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
-            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        <img onclick="delOrSubPlayer(this.alt)" id="insideMID3"
+            style="z-index: 0;position: absolute;top: 44%; right: 56%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt=0>
 
-        <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
-            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        <img onclick="delOrSubPlayer(this.alt)" id="insideMID4"
+            style="z-index: 0;position: absolute;top: 44%; right: 80%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt=0>
 
-        <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
-            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        <img onclick="delOrSubPlayer(this.alt)" id="outsideMID"
+            style="z-index: 0;position: absolute;top: 85%; right: 58%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt=0>
 
-        <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
-            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        <img onclick="delOrSubPlayer(this.alt)" id="insideFRW1"
+            style="z-index: 0;position: absolute;top: 64%; right: 35%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt=0>
 
-        <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
-            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        <img onclick="delOrSubPlayer(this.alt)" id="insideFRW2"
+            style="z-index: 0;position: absolute;top: 64%; right: 56%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt=0>
 
-        <img style="z-index: 0;position: absolute;top: 15%; right: 32%;"
-            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt="">
+        <img onclick="delOrSubPlayer(this.alt)" id="outsideFRW"
+            style="z-index: 0;position: absolute;top: 85%; right: 80%;"
+            src="https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp" alt=0>
     </div>
+
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        let chooseMode = "add";
+
+        let playerForSub1 = -1;
+        let playerForSub2 = -1;
+
+        function choose(mode) {
+            if (mode == 'add') {
+                document.getElementById('add').className = "buttonClicked";
+                document.getElementById('del').className = "button";
+                document.getElementById('sub').className = "button";
+                chooseMode = "add";
+            }
+            if (mode == 'del') {
+                document.getElementById('add').className = "button";
+                document.getElementById('del').className = "buttonClicked";
+                document.getElementById('sub').className = "button";
+                chooseMode = "del";
+            }
+            if (mode == 'sub') {
+                document.getElementById('add').className = "button";
+                document.getElementById('del').className = "button";
+                document.getElementById('sub').className = "buttonClicked";
+                chooseMode = "sub";
+            }
+        }
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let token = urlParams.get('token');
+
+
         function pageIndexHandle(nextOrPre) {
             if (nextOrPre == "pre") {
                 let number = parseInt(document.getElementById("pageIndex").innerHTML);
@@ -210,7 +277,6 @@
             if (document.getElementById("minCost").value == "") {
                 url += -1;
             } else {
-                // alert("a");
                 url += document.getElementById("minCost").value;
             }
 
@@ -218,7 +284,6 @@
             if (document.getElementById("maxCost").value == "") {
                 url += -1;
             } else {
-                // alert("b");
                 url += document.getElementById("maxCost").value;
             }
 
@@ -226,7 +291,6 @@
             if (document.getElementById("minPoint").value == "") {
                 url += -1;
             } else {
-                // alert("c");
                 url += document.getElementById("minPoint").value;
             }
 
@@ -234,16 +298,29 @@
             if (document.getElementById("maxPoint").value == "") {
                 url += -1;
             } else {
-                // alert("d");
                 url += document.getElementById("maxPoint").value;
             }
 
-
             $.get(url, function (data) {
-                var table = "<table><tr><th>image</th><th>first name</th><th>last name</th><th>price</th><th>total Point</th><th>position</th><th>team</th></tr>";
+                var table = "";
                 let counter = 0;
                 $.each(data, function (index, value) {
-                    table += "<tr><td style='width: 20%'>" + "<div><img class='PlayerPhoto' src='https://resources.premierleague.com/premierleague/photos/players/250x250/p" + value.code + ".png'></div>" + "</td><td>" + value.first_name + "</td><td>" + value.second_name + "</td><td>" + value.now_cost + "</td><td>" + value.total_points + "</td><td>";
+                    table += "<tr onclick='addPlayer(";
+                    table += value.code;
+                    table += ")'>"
+
+
+                    table += "<td style='width: 20.8%'>" + "<div><img class='PlayerPhoto' src='https://resources.premierleague.com/premierleague/photos/players/250x250/p" + value.code + ".png'></div>" + "</td>";
+
+                    table += "<td style='width: 12.75%'>" + value.first_name + "</td>";
+
+                    table += "<td style='width: 17.5%'>" + value.second_name + "</td>";
+
+                    table += "<td style='width: 7%'>" + value.now_cost + "</td>";
+
+                    table += "<td style='width: 10%'>" + value.total_points + "</td>";
+
+                    table += "<td style='width: 10%'>";
                     if (value.element_type == "1") {
                         table += "GK";
                     }
@@ -256,7 +333,12 @@
                     if (value.element_type == "4") {
                         table += "FRW";
                     }
-                    table += "</td><td>" + "<div><img class='PlayerPhoto' src='https://resources.premierleague.com/premierleague/badges/rb/t" + value.team_code + ".svg'></div>" + "</td></tr>";
+                    table += "</td>";
+
+                    table += "<td style='width: 20%'>" + "<div><img class='PlayerPhoto' src='https://resources.premierleague.com/premierleague/badges/rb/t" + value.team_code + ".svg'></div>" + "</td>";
+
+
+                    table += "</tr>";
                     counter++;
                 });
                 if (counter == 0) {
@@ -269,9 +351,251 @@
                         return;
                     }
                 }
-                table += "</table>";
+                // table = document.getElementById('#table-container').html + table;
                 $("#table-container").html(table);
             });
+        }
+
+        $(document).ready(lineup)
+
+        function lineup() {
+            $.get("http://localhost:3001/getAllPlayer/?token=" + token, function (data) {
+                if (data[4].code != -1) {
+                    document.getElementById('insideGK').src = "https://resources.premierleague.com/premierleague/photos/players/250x250/p" + data[4].code + ".png";
+                    document.getElementById('insideGK').style.width = '11%';
+                    document.getElementById('insideGK').alt = data[4].code;
+                }
+                else {
+                    document.getElementById('insideGK').src = "https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp";
+                    document.getElementById('insideGK').alt = 0;
+                }
+
+                if (data[0].code != -1) {
+                    document.getElementById('outsideGK').src = "https://resources.premierleague.com/premierleague/photos/players/250x250/p" + data[0].code + ".png";
+                    document.getElementById('outsideGK').style.width = '11%';
+                    document.getElementById('outsideGK').alt = data[0].code;
+                }
+                else {
+                    document.getElementById('outsideGK').src = "https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp";
+                    document.getElementById('outsideGK').alt = 0;
+                }
+
+                if (data[5].code != -1) {
+                    document.getElementById('insideDEF1').src = "https://resources.premierleague.com/premierleague/photos/players/250x250/p" + data[5].code + ".png";
+                    document.getElementById('insideDEF1').style.width = '11%';
+                    document.getElementById('insideDEF1').alt = data[5].code;
+                }
+                else {
+                    document.getElementById('insideDEF1').src = "https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp";
+                    document.getElementById('insideDEF1').alt = 0;
+                }
+
+                if (data[6].code != -1) {
+                    document.getElementById('insideDEF2').src = "https://resources.premierleague.com/premierleague/photos/players/250x250/p" + data[6].code + ".png";
+                    document.getElementById('insideDEF2').style.width = '11%';
+                    document.getElementById('insideDEF2').alt = data[6].code;
+                }
+                else {
+                    document.getElementById('insideDEF2').src = "https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp";
+                    document.getElementById('insideDEF2').alt = 0;
+                }
+
+                if (data[7].code != -1) {
+                    document.getElementById('insideDEF3').src = "https://resources.premierleague.com/premierleague/photos/players/250x250/p" + data[7].code + ".png";
+                    document.getElementById('insideDEF3').style.width = '11%';
+                    document.getElementById('insideDEF3').alt = data[7].code;
+                }
+                else {
+                    document.getElementById('insideDEF3').src = "https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp";
+                    document.getElementById('insideDEF3').alt = 0;
+                }
+
+                if (data[8].code != -1) {
+                    document.getElementById('insideDEF4').src = "https://resources.premierleague.com/premierleague/photos/players/250x250/p" + data[8].code + ".png";
+                    document.getElementById('insideDEF4').style.width = '11%';
+                    document.getElementById('insideDEF4').alt = data[8].code;
+                }
+                else {
+                    document.getElementById('insideDEF4').src = "https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp";
+                    document.getElementById('insideDEF4').alt = 0;
+                }
+
+                if (data[1].code != -1) {
+                    document.getElementById('outsideDEF').src = "https://resources.premierleague.com/premierleague/photos/players/250x250/p" + data[1].code + ".png";
+                    document.getElementById('outsideDEF').style.width = '11%';
+                    document.getElementById('outsideDEF').alt = data[1].code;
+                }
+                else {
+                    document.getElementById('outsideDEF').src = "https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp";
+                    document.getElementById('outsideDEF').alt = 0;
+                }
+
+                if (data[9].code != -1) {
+                    document.getElementById('insideMID1').src = "https://resources.premierleague.com/premierleague/photos/players/250x250/p" + data[9].code + ".png";
+                    document.getElementById('insideMID1').style.width = '11%';
+                    document.getElementById('insideMID1').alt = data[9].code;
+                }
+                else {
+                    document.getElementById('insideMID1').src = "https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp";
+                    document.getElementById('insideMID1').alt = 0;
+                }
+
+                if (data[10].code != -1) {
+                    document.getElementById('insideMID2').src = "https://resources.premierleague.com/premierleague/photos/players/250x250/p" + data[10].code + ".png";
+                    document.getElementById('insideMID2').style.width = '11%';
+                    document.getElementById('insideMID2').alt = data[10].code;
+                }
+                else {
+                    document.getElementById('insideMID2').src = "https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp";
+                    document.getElementById('insideMID2').alt = 0;
+                }
+
+                if (data[11].code != -1) {
+                    document.getElementById('insideMID3').src = "https://resources.premierleague.com/premierleague/photos/players/250x250/p" + data[11].code + ".png";
+                    document.getElementById('insideMID3').style.width = '11%';
+                    document.getElementById('insideMID3').alt = data[11].code;
+                }
+                else {
+                    document.getElementById('insideMID3').src = "https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp";
+                    document.getElementById('insideMID3').alt = 0;
+                }
+
+                if (data[12].code != -1) {
+                    document.getElementById('insideMID4').src = "https://resources.premierleague.com/premierleague/photos/players/250x250/p" + data[12].code + ".png";
+                    document.getElementById('insideMID4').style.width = '11%';
+                    document.getElementById('insideMID4').alt = data[12].code;
+                }
+                else {
+                    document.getElementById('insideMID4').src = "https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp";
+                    document.getElementById('insideMID4').alt = 0;
+                }
+
+                if (data[2].code != -1) {
+                    document.getElementById('outsideMID').src = "https://resources.premierleague.com/premierleague/photos/players/250x250/p" + data[2].code + ".png";
+                    document.getElementById('outsideMID').style.width = '11%';
+                    document.getElementById('outsideMID').alt = data[2].code;
+                }
+                else {
+                    document.getElementById('outsideMID').src = "https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp";
+                    document.getElementById('outsideMID').alt = 0;
+                }
+
+                if (data[13].code != -1) {
+                    document.getElementById('insideFRW1').src = "https://resources.premierleague.com/premierleague/photos/players/250x250/p" + data[13].code + ".png";
+                    document.getElementById('insideFRW1').style.width = '11%';
+                    document.getElementById('insideFRW1').alt = data[13].code;
+                }
+                else {
+                    document.getElementById('insideFRW1').src = "https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp";
+                    document.getElementById('insideFRW1').alt = 0;
+                }
+
+                if (data[14].code != -1) {
+                    document.getElementById('insideFRW2').src = "https://resources.premierleague.com/premierleague/photos/players/250x250/p" + data[14].code + ".png";
+                    document.getElementById('insideFRW2').style.width = '11%';
+                    document.getElementById('insideFRW2').alt = data[14].code;
+                }
+                else {
+                    document.getElementById('insideFRW2').src = "https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp";
+                    document.getElementById('insideFRW2').alt = 0;
+                }
+
+                if (data[3].code != -1) {
+                    document.getElementById('outsideFRW').src = "https://resources.premierleague.com/premierleague/photos/players/250x250/p" + data[3].code + ".png";
+                    document.getElementById('outsideFRW').style.width = '11%';
+                    document.getElementById('outsideFRW').alt = data[3].code;
+                }
+                else {
+                    document.getElementById('outsideFRW').src = "https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_0_1-66.webp";
+                    document.getElementById('outsideFRW').alt = 0;
+                }
+            });
+
+            $.get("http://localhost:3001/getMoney/?token=" + token, function (data) {
+                document.getElementById('money').innerHTML = "budget: " + data;
+            });
+        };
+
+        function addPlayer(code) {
+            if (chooseMode != 'add') {
+                return;
+            }
+            url = "http://localhost:3001/addplyerToteam/?token=" + token + "&code=" + code;
+            $.post(url, function (data) {
+                alert(data);
+            });
+            lineup();
+        }
+        function delOrSubPlayer(code) {
+            if (chooseMode == 'del') {
+                deletePlayer(code);
+                return;
+            }
+            if (chooseMode == 'sub') {
+                substitut(code);
+                return;
+            }
+        }
+        function deletePlayer(code) {
+            if (code == 0) {
+                return;
+            }
+            url = "http://localhost:3001/deletePlayer/?token=" + token + "&code=" + code;
+            $.post(url, function (data) {
+                alert(data);
+            });
+            lineup();
+        }
+        function substitut(code) {
+            if (playerForSub1 == -1) {
+                playerForSub1 = code;
+                substitutMode();
+                return;
+            }
+            if (playerForSub2 == -1) {
+                playerForSub2 = code;
+                UnSubstitutMode();
+            }
+            $.get("http://localhost:3001/substitutPlayer/?token=" + token + "&code1=" + playerForSub1 + "&code2=" + playerForSub2, function (data) {
+                alert(data);
+            });
+            playerForSub1 = -1;
+            playerForSub2 = -1;
+        }
+
+        function substitutMode() {
+            document.getElementById('insideGK').style.backgroundColor = "rgb(255,255,0)";
+            document.getElementById('outsideGK').style.backgroundColor = "rgb(255,255,0)";
+            document.getElementById('insideDEF1').style.backgroundColor = "rgb(255,255,0)";
+            document.getElementById('insideDEF2').style.backgroundColor = "rgb(255,255,0)";
+            document.getElementById('insideDEF3').style.backgroundColor = "rgb(255,255,0)";
+            document.getElementById('insideDEF4').style.backgroundColor = "rgb(255,255,0)";
+            document.getElementById('outsideDEF').style.backgroundColor = "rgb(255,255,0)";
+            document.getElementById('insideMID1').style.backgroundColor = "rgb(255,255,0)";
+            document.getElementById('insideMID2').style.backgroundColor = "rgb(255,255,0)";
+            document.getElementById('insideMID3').style.backgroundColor = "rgb(255,255,0)";
+            document.getElementById('insideMID4').style.backgroundColor = "rgb(255,255,0)";
+            document.getElementById('outsideMID').style.backgroundColor = "rgb(255,255,0)";
+            document.getElementById('insideFRW1').style.backgroundColor = "rgb(255,255,0)";
+            document.getElementById('insideFRW2').style.backgroundColor = "rgb(255,255,0)";
+            document.getElementById('outsideFRW').style.backgroundColor = "rgb(255,255,0)";
+        }
+        function UnSubstitutMode() {
+            document.getElementById('insideGK').style.backgroundColor = null;
+            document.getElementById('outsideGK').style.backgroundColor = null;
+            document.getElementById('insideDEF1').style.backgroundColor = null;
+            document.getElementById('insideDEF2').style.backgroundColor = null;
+            document.getElementById('insideDEF3').style.backgroundColor = null;
+            document.getElementById('insideDEF4').style.backgroundColor = null;
+            document.getElementById('outsideDEF').style.backgroundColor = null;
+            document.getElementById('insideMID1').style.backgroundColor = null;
+            document.getElementById('insideMID2').style.backgroundColor = null;
+            document.getElementById('insideMID3').style.backgroundColor = null;
+            document.getElementById('insideMID4').style.backgroundColor = null;
+            document.getElementById('outsideMID').style.backgroundColor = null;
+            document.getElementById('insideFRW1').style.backgroundColor = null;
+            document.getElementById('insideFRW2').style.backgroundColor = null;
+            document.getElementById('outsideFRW').style.backgroundColor = null;
         }
     </script>
 </body>

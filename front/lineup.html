@@ -12,7 +12,7 @@
         <ul class="grad1" style="font-size: x-large;">
             <li onclick="window.location.href='mainPage.html'" style="font-weight: 900;"><a href="#">home</a></li>
             <li><a href="#">line up</a></li>
-            <li><a href="#">states</a></li>
+            <li onclick="goToStstes()"><a href="#">states</a></li>
             <li onclick="window.location.href='teams.html'"><a href="#">teams</a></li>
         </ul>
         <img style="width: 3.8%;position: absolute;top: 2%;right: 0.5%;" src="images/IMG_20230712_141806.jpg"
@@ -596,6 +596,10 @@
             document.getElementById('insideFRW1').style.backgroundColor = null;
             document.getElementById('insideFRW2').style.backgroundColor = null;
             document.getElementById('outsideFRW').style.backgroundColor = null;
+        }
+
+        function goToStstes() {
+            window.location.href = "states.html?token=" + token;
         }
     </script>
 </body>

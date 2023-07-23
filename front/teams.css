@@ -1,0 +1,131 @@
+.grad1 {
+    height: 55px;
+    z-index: 1;
+    background-color: rgb(0, 8, 255);
+    /* For browsers that do not support gradients */
+    background-image: linear-gradient(to right, aquamarine, rgba(180, 60, 207, 20));
+}
+.container {
+    height: 90vh;
+    margin: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr ;
+  }
+  .cell {
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+    padding: 4rem;
+    height: 200px;
+    width: 160px;
+  }
+  .cell-1 {
+    background: deepskyblue;
+  }
+  .cell-2 {
+    background: navajowhite;
+  }
+  .cell-3 {
+    background: navajowhite;
+  }
+  .cell-4 {
+    background: gold;
+  }
+  .cell-5 {
+    background: antiquewhite;
+  }
+  .cell-6 {
+    background: limegreen;
+  }
+  .cell-7 {
+    background: coral;
+  }
+  .cell-8 {
+    background: aquamarine;
+  }
+  .cell-9 {
+    background: maroon;
+  }
+  .cell-9 {
+    background: maroon;
+  }
+  .cell-10 {
+    background: maroon;
+  }
+  .cell-11 {
+    background: maroon;
+  }
+  .cell-12 {
+    background: maroon;
+  }
+  .cell-13 {
+    background: maroon;
+  }
+  .cell-14 {
+    background: maroon;
+  }
+  .cell-15 {
+    background: maroon;
+  }
+  .cell-16 {
+    background: maroon;
+  }
+  .cell-17 {
+    background: maroon;
+  }
+  .cell-18 {
+    background: maroon;
+  }
+  .cell-19 {
+    background: maroon;
+  }
+  .cell-20 {
+    background: maroon;
+  }
+
+nav {
+    background-color: rgb(56, 28, 89);
+    /* رنگ پس زمینه نوار ناوبری */
+    position: fixed;
+    /* تعیین موقعیت نوار ناوبری */
+    top: 0;
+    /* نوار ناوبری به بالای صفحه چسبیده خواهد شد */
+    left: 0;
+    width: 100%;
+    /* عرض نوار ناوبری برابر با عرض صفحه می‌شود */
+    z-index: 1;
+    /* تعیین اولویت نمایش نوار ناوبری بالاتر از سایر المان‌های صفحه */
+    font-size: xx-large;
+}
+
+nav ul {
+    list-style-type: none;
+    /* حذف نشانه لیست */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: aquamarine;
+    /* رنگ پس زمینه نوار ناوبری */
+}
+
+nav li {
+    float: left;
+    /* چیدمان به سمت راست */
+}
+
+nav li a {
+    display: block;
+    color: rgb(56, 28, 89);
+    /* رنگ متن */
+    text-align: center;
+    padding: 14px 16px;
+    /* فاصله از لبه های نوار ناوبری */
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: rgb(56, 28, 89);
+    /* رنگ پس زمینه هنگام هاور ماوس روی لینک */
+    color: aquamarine;
+}

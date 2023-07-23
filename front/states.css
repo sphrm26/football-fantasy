@@ -1,0 +1,41 @@
+nav {
+    background-color: rgb(56, 28, 89);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    font-size: xx-large;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: aquamarine;
+}
+
+nav li {
+    float: left;
+}
+
+nav li a {
+    display: block;
+    color: rgb(56, 28, 89);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: rgb(56, 28, 89);
+    color: aquamarine;
+}
+
+.grad1 {
+    height: 55px;
+    z-index: 1;
+    background-color: aquamarine;
+    background-image: linear-gradient(to right, aquamarine, rgba(180, 60, 207, 20));
+}
